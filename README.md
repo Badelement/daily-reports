@@ -14,7 +14,7 @@ OpenClaw 自动化汇报同步仓库。
 - [latest 安全笔记](weekly-security/latest-security.md)
 
 ### 最新开源观察
-- [open-source-watch/](open-source-watch/)
+- [latest 开源观察](open-source-watch/latest-watch.md)
 
 如果首页看起来内容不全，请直接进入对应子目录查看。
 
@@ -48,7 +48,11 @@ daily-reports/
 - 正在补同步
 
 ### 开源观察
-- 正在补同步
+- [2026-03-15](open-source-watch/2026-03-15-watch.md)
+- [2026-03-16](open-source-watch/2026-03-16-watch.md)
+- [2026-03-17](open-source-watch/2026-03-17-watch.md)
+- [2026-03-18](open-source-watch/2026-03-18-watch.md)
+- [2026-03-19](open-source-watch/2026-03-19-watch.md)
 
 ---
 
@@ -99,7 +103,7 @@ git status
 
 - 仓库已经公开，可直接网页查看
 - 这是一个**多定时任务汇总仓库**，不只是早报仓库
-- 目前早报链路已通，安全笔记已补入，复盘与开源观察正在修复补齐
+- 目前早报 / 复盘 / 安全笔记 / 开源观察 四条链都已落入仓库
 
 ---
 
