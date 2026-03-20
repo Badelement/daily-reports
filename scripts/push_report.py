@@ -248,12 +248,10 @@ source_file: {source_file.name}
             
             logger.info(f"复制报告到: {target_path}")
             
-            # 更新最新文件软链接
-            latest_link = target_dir / f"latest-{report_type}.md"
-            if latest_link.exists():
-                latest_link.unlink()
-            latest_link.symlink_to(target_filename)
-            logger.info(f"更新软链接: {latest_link} -> {target_filename}")
+            # 更新 latest 文件（真实 markdown 文件，不用软链接，便于 GitHub 网页直接查看）
+            latest_file = target_dir / f"latest-{report_type}.md"
+            shutil.copy2(target_path, latest_file)
+            logger.info(f"更新 latest 文件: {latest_file} -> {target_filename}")
 
             # 更新首页 README 中的最新入口
             self.update_readme_homepage()

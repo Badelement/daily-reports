@@ -1,1 +1,22 @@
-2026-03-20-morning.md
+---
+title: 2026-03-20 早报
+type: morning
+date: 2026-03-20
+tags: [openclaw, automation]
+synced_at: 2026-03-20 12:21:29
+synced_by: batch_sync
+---
+
+# 2026年3月20日早报
+
+## 1）今日最值得知道的事
+OpenClaw仓库今日凌晨有多个重要修复PR合并：1) Telegram DM策略警告修复（避免配对模式无allowFrom配置），2) Ollama思考模式bug修复（think:false未正确传递），3) 新增GPT-5.4 mini/nano模型回退支持。这些修复对Mac本地Telegram用户尤其重要，建议关注相关issue #50711和#50712。
+
+## 2）今天值得试的一个 skill / 工具
+**Telegram** skill (ClawHub评分3.637)：专门优化Telegram集成，提供消息管理、群组监控和自动化回复功能。对于在Mac mini上通过Telegram使用OpenClaw的用户，可增强消息处理稳定性和交互体验。
+
+## 3）值得关注的一个项目 / 更新
+**Binance-Claw** (GitHub趋势项目，165星)：基于Rust开发的Binance价格监控OpenClaw技能，提供实时价格狙击和交易监控。虽然主要面向加密货币交易，但其高性能架构设计值得关注，展示了OpenClaw生态中Rust技能的开发模式。
+
+## 4）一句给朽木的实用建议
+检查Telegram配置中的dmPolicy设置，确保不是"pairing"模式或已正确配置allowFrom，避免因凌晨修复的bug导致消息投递问题。

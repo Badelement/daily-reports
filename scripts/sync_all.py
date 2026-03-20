@@ -229,13 +229,12 @@ synced_by: batch_sync
             logger.warning(f"添加元数据失败 {filepath}: {e}")
     
     def update_latest_links(self):
-        """更新最新文件软链接"""
-        logger.info("更新最新文件软链接...")
+        """更新 latest 文件（真实 markdown 文件，不用软链接）"""
+        logger.info("更新 latest 文件...")
         
         for report_type, config in self.report_configs.items():
             target_dir = config['target_dir']
             
-            # 查找最新的文件
             pattern = f"*-{config['prefix']}.md"
             files = [f for f in target_dir.glob(pattern) if not f.name.startswith('latest-')]
             
@@ -243,20 +242,15 @@ synced_by: batch_sync
                 logger.warning(f"未找到 {report_type} 文件")
                 continue
             
-            # 按日期排序
             files.sort(key=lambda x: x.stat().st_mtime, reverse=True)
-            latest_file = files[0]
-            
-            # 创建或更新软链接
-            latest_link = target_dir / f"latest-{config['prefix']}.md"
-            if latest_link.exists() or latest_link.is_symlink():
-                latest_link.unlink()
+            latest_source = files[0]
+            latest_file = target_dir / f"latest-{config['prefix']}.md"
             
             try:
-                latest_link.symlink_to(latest_file.name)
-                logger.info(f"更新链接: {latest_link} -> {latest_file.name}")
+                shutil.copy2(latest_source, latest_file)
+                logger.info(f"更新 latest 文件: {latest_file} <= {latest_source.name}")
             except Exception as e:
-                logger.error(f"创建软链接失败: {e}")
+                logger.error(f"创建 latest 文件失败: {e}")
     
     def git_commit_and_push(self, commit_message=None):
         """提交并推送到GitHub"""
