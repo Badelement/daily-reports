@@ -1,1 +1,1 @@
-2026-03-20-morning.md
+latest-morning.md
