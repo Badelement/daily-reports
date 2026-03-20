@@ -18,6 +18,7 @@ OpenClaw 自动化汇报同步仓库。
 | 🌙 复盘 | [latest-evening.md](evening-reviews/latest-evening.md) | [evening-reviews/](evening-reviews/) |
 | 🛡️ 安全笔记 | [latest-security.md](weekly-security/latest-security.md) | [weekly-security/](weekly-security/) |
 | 🔎 开源观察 | [latest-watch.md](open-source-watch/latest-watch.md) | [open-source-watch/](open-source-watch/) |
+| 🧠 会话状态 | [openclaw-session-status.md](status/openclaw-session-status.md) | [status/](status/) |
 
 如果首页看起来内容不多，请直接点击上面对应目录。
 
