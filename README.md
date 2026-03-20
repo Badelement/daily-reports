@@ -1,35 +1,52 @@
-# 📊 Daily Reports Dashboard
+# 🖥️ OpenClaw Monitoring Dashboard
 
-OpenClaw 自动化汇报同步仓库。
+这是主页面。
 
-这是一个统一汇总多个定时任务产物的仓库，目前已接通：
-- 🌅 每日早报
-- 🌙 晚间复盘
-- 🛡️ 每周安全笔记
-- 🔎 开源观察
+这个仓库现在的主要用途是：
+- 监控 OpenClaw 当前运行状态
+- 查看模型 / 配额 / Gateway / cron 情况
+- 汇总最近的自动化报告
+- 作为 GitHub 上的可视化快照中心
 
----
-
-## 🚀 快速入口
-
-| 类型 | 最新入口 | 目录 |
-|---|---|---|
-| 🌅 早报 | [latest-morning.md](morning-briefs/latest-morning.md) | [morning-briefs/](morning-briefs/) |
-| 🌙 复盘 | [latest-evening.md](evening-reviews/latest-evening.md) | [evening-reviews/](evening-reviews/) |
-| 🛡️ 安全笔记 | [latest-security.md](weekly-security/latest-security.md) | [weekly-security/](weekly-security/) |
-| 🔎 开源观察 | [latest-watch.md](open-source-watch/latest-watch.md) | [open-source-watch/](open-source-watch/) |
-| 🧠 会话状态 | [openclaw-session-status.md](status/openclaw-session-status.md) | [status/](status/) |
-
-如果首页看起来内容不多，请直接点击上面对应目录。
+报告页仍然保留，但现在属于**次要页面**。
 
 ---
 
-## 📁 当前仓库结构
+## 🚀 主入口
+
+### 系统监控
+- [System Dashboard](status/system-dashboard.md)
+- [Session Status](status/openclaw-session-status.md)
+
+### 报告入口（次要页面）
+- [🌅 早报](morning-briefs/latest-morning.md)
+- [🌙 复盘](evening-reviews/latest-evening.md)
+- [🛡️ 安全笔记](weekly-security/latest-security.md)
+- [🔎 开源观察](open-source-watch/latest-watch.md)
+
+---
+
+## 📌 当前定位
+
+### 主页面
+- `status/system-dashboard.md`
+- `status/openclaw-session-status.md`
+
+### 次要页面
+- `morning-briefs/`
+- `evening-reviews/`
+- `weekly-security/`
+- `open-source-watch/`
+
+---
+
+## 📁 仓库结构
 
 ```text
 daily-reports/
 ├── README.md
 ├── SETUP_GUIDE.md
+├── status/
 ├── morning-briefs/
 ├── evening-reviews/
 ├── weekly-security/
@@ -39,94 +56,27 @@ daily-reports/
 
 ---
 
-## 🗂️ 当前已同步内容
+## 🔄 更新机制
 
-### 🌅 早报
-- [2026-03-14](morning-briefs/2026-03-14-morning.md)
-- [2026-03-15](morning-briefs/2026-03-15-morning.md)
-- [2026-03-16](morning-briefs/2026-03-16-morning.md)
-- [2026-03-17](morning-briefs/2026-03-17-morning.md)
-- [2026-03-18](morning-briefs/2026-03-18-morning.md)
-- [2026-03-19](morning-briefs/2026-03-19-morning.md)
-- [2026-03-20](morning-briefs/2026-03-20-morning.md)
+### 监控页
+- 每 30 分钟自动刷新一次
+- 用于查看系统快照
 
-### 🌙 晚间复盘
-- [2026-03-13](evening-reviews/2026-03-13-evening.md)
-- [2026-03-14](evening-reviews/2026-03-14-evening.md)
-- [2026-03-15](evening-reviews/2026-03-15-evening.md)
-- [2026-03-16](evening-reviews/2026-03-16-evening.md)
-- [2026-03-17](evening-reviews/2026-03-17-evening.md)
-- [2026-03-18](evening-reviews/2026-03-18-evening.md)
-- [2026-03-19](evening-reviews/2026-03-19-evening.md)
-
-### 🛡️ 每周安全笔记
-- [2026-03-15](weekly-security/2026-03-15-security.md)
-
-### 🔎 开源观察
-- [2026-03-15](open-source-watch/2026-03-15-watch.md)
-- [2026-03-16](open-source-watch/2026-03-16-watch.md)
-- [2026-03-17](open-source-watch/2026-03-17-watch.md)
-- [2026-03-18](open-source-watch/2026-03-18-watch.md)
-- [2026-03-19](open-source-watch/2026-03-19-watch.md)
-
----
-
-## 🔄 同步机制
-
-### 自动流程
-1. OpenClaw 定时任务生成对应内容
-2. 内容保存到本地工作目录 / 或从 cron 历史回填
-3. 自动同步到 `daily-reports`
-4. 自动提交并推送到 GitHub
-
-### 当前已接通
-- 早报：已接通
-- 复盘：已接通
-- 安全笔记：已接通
-- 开源观察：已接通
-
----
-
-## 💻 本地查看
-
-```bash
-git clone https://github.com/Badelement/daily-reports.git
-cd daily-reports
-git pull origin main
-```
-
-查看最新文件：
-
-```bash
-cat morning-briefs/latest-morning.md
-cat evening-reviews/latest-evening.md
-cat weekly-security/latest-security.md
-cat open-source-watch/latest-watch.md
-```
-
----
-
-## 🛠️ 手动检查同步状态
-
-```bash
-cd ~/.openclaw/workspace/daily-reports
-git log --oneline -5
-git status
-```
+### 报告页
+- 按各自定时任务刷新
+- 用于查看详细内容和历史归档
 
 ---
 
 ## ℹ️ 说明
 
-- 仓库已经公开，可直接网页查看
-- 这是一个**多定时任务汇总仓库**，不只是早报仓库
-- 首页现在作为统一导航页使用
-- 各目录中的 `latest-*` 文件可作为稳定入口
+- 这个仓库已经从“报告仓库”升级为“监控 + 报告中心”
+- 监控页是主页面
+- 报告页是次要内容页
+- GitHub 更适合做**准实时快照**，不适合做严格实时面板
 
 ---
 
-## ✅ 当前状态
-
 **状态**：运行正常  
-**最后检查**：2026-03-20 12:32  
+**最后更新**：2026-03-20 12:46  
 **维护者**：OpenClaw 自动化系统
