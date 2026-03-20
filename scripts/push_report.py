@@ -50,7 +50,8 @@ class ReportPusher:
             'watch': {
                 'source_dir': Path.home() / '.openclaw' / 'workspace',
                 'target_dir': self.repo_path / 'open-source-watch',
-                'pattern': 'open-source-watch-*.md'
+                'pattern': 'open-source-watch-*.md',
+                'cron_job_id': 'ef3bb9db-238b-4e6b-9dda-dbc79e87a541'
             }
         }
         
@@ -162,17 +163,48 @@ git status
             return None
         
         config = self.report_types[report_type]
+
+        # watch 类型直接从 cron 运行历史取最近摘要
+        if report_type == 'watch':
+            cron_job_id = config.get('cron_job_id')
+            try:
+                result = subprocess.run(
+                    ['openclaw', 'cron', 'runs', '--id', cron_job_id, '--limit', '1'],
+                    capture_output=True,
+                    text=True,
+                    timeout=30
+                )
+                if result.returncode != 0:
+                    logger.warning(f"读取 watch cron 运行历史失败: {result.stderr}")
+                    return None
+                data = json.loads(result.stdout)
+                entries = data.get('entries', [])
+                if not entries:
+                    logger.warning('未找到 watch cron 历史记录')
+                    return None
+                latest = entries[0]
+                summary = latest.get('summary', '').strip()
+                if not summary:
+                    logger.warning('watch cron 最近一次运行没有 summary')
+                    return None
+                date_str = datetime.fromtimestamp(latest.get('runAtMs', latest.get('ts')) / 1000).strftime('%Y-%m-%d')
+                temp_path = self.repo_path / '.watch-latest.tmp.md'
+                temp_path.write_text(summary + '\n', encoding='utf-8')
+                logger.info(f"已从 cron 运行历史提取最新 watch 摘要: {date_str}")
+                return temp_path
+            except Exception as e:
+                logger.error(f"读取 {report_type} cron 历史失败: {e}")
+                return None
+
         source_dir = config['source_dir']
         pattern = config['pattern']
         
-        # 查找最新文件
         try:
             files = list(source_dir.glob(pattern))
             if not files:
                 logger.warning(f"未找到 {report_type} 报告: {source_dir}/{pattern}")
                 return None
             
-            # 按修改时间排序，取最新的
             latest_file = max(files, key=lambda x: x.stat().st_mtime)
             logger.info(f"找到最新 {report_type} 报告: {latest_file}")
             return latest_file
