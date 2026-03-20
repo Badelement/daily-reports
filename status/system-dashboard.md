@@ -2,7 +2,7 @@
 
 主监控页。这个页面优先于报告页，用于集中查看 OpenClaw 当前运行状态。
 
-**更新时间**: 2026-03-20 12:47:06 (Asia/Shanghai)
+**更新时间**: 2026-03-20 12:49:49 (Asia/Shanghai)
 
 ---
 
@@ -22,7 +22,13 @@
 
 ---
 
-## 2. OpenClaw 会话状态
+## 2. 异常状态摘要
+
+- daily-reports 仓库存在未提交更改
+
+---
+
+## 3. OpenClaw 会话状态
 
 ```text
 OpenClaw status
@@ -64,10 +70,10 @@ Sessions
 ┌────────────────────────────────────────────────┬────────┬─────────┬───────────────┬──────────────────────────────────┐
 │ Key                                            │ Kind   │ Age     │ Model         │ Tokens                           │
 ├────────────────────────────────────────────────┼────────┼─────────┼───────────────┼──────────────────────────────────┤
-│ agent:main:telegram:direct:7310…               │ direct │ 1m ago  │ gpt-5.4       │ 182k/272k (67%) · 🗄️ 99% cached  │
-│ agent:main:main                                │ direct │ 29m ago │ deepseek-chat │ 46k/128k (36%) · 🗄️ 100% cached  │
-│ agent:main:cron:9fea7709-95fe-4…               │ direct │ 4h ago  │ deepseek-chat │ 20k/128k (16%) · 🗄️ 1163% cached │
-│ agent:main:cron:9fea7709-95fe-4…               │ direct │ 4h ago  │ deepseek-chat │ 20k/128k (16%) · 🗄️ 1163% cached │
+│ agent:main:telegram:direct:7310…               │ direct │ 1m ago  │ gpt-5.4       │ 187k/272k (69%) · 🗄️ 100% cached │
+│ agent:main:main                                │ direct │ 1m ago  │ deepseek-chat │ 48k/128k (37%) · 🗄️ 100% cached  │
+│ agent:main:cron:9fea7709-95fe-4…               │ direct │ 5h ago  │ deepseek-chat │ 20k/128k (16%) · 🗄️ 1163% cached │
+│ agent:main:cron:9fea7709-95fe-4…               │ direct │ 5h ago  │ deepseek-chat │ 20k/128k (16%) · 🗄️ 1163% cached │
 │ agent:main:cron:bbbba49f-c5d4-4…               │ direct │ 15h ago │ deepseek-chat │ 15k/128k (11%) · 🗄️ 743% cached  │
 │ agent:main:cron:bbbba49f-c5d4-4…               │ direct │ 15h ago │ deepseek-chat │ 15k/128k (11%) · 🗄️ 743% cached  │
 │ agent:main:cron:ef3bb9db-238b-4…               │ direct │ 18h ago │ deepseek-chat │ 17k/128k (13%) · 🗄️ 1365% cached │
@@ -87,7 +93,7 @@ Next steps:
 
 ---
 
-## 3. Gateway 状态
+## 4. Gateway 状态
 
 ```text
 Service: LaunchAgent (loaded)
@@ -106,10 +112,11 @@ Dashboard: disabled
 
 ---
 
-## 4. Cron 状态
+## 5. Cron 状态
 
 ```text
 ID                                   Name                     Schedule                         Next       Last       Status    Target    Agent ID   Model               
+d2e5fda8-439e-44e2-b475-cdfb4a96c0b0 daily-reports-dashboa... every 30m                        in 28m     -          idle      main      main       -
 ef3bb9db-238b-4e6b-9dda-dbc79e87a541 open-source-watch-for... cron 15 19 * * * @ Asia/Shang... in 6h      18h ago    ok        isolated  main       deepseek/deepseek...
 bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @ Asia/Shang... in 9h      15h ago    ok        isolated  -          deepseek/deepseek...
 9fea7709-95fe-462f-b38c-752efed139b0 morning-intel-brief      cron 20 8 * * * @ Asia/Shangh... in 20h     4h ago     ok        isolated  -          deepseek/deepseek...
@@ -118,19 +125,25 @@ bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @
 
 ---
 
-## 5. 仓库最近提交
+## 6. 仓库状态
 
+### 最近提交
 ```text
+04c3133 feat: promote monitoring dashboard as primary homepage
 9f79d1d feat: add OpenClaw session status page to dashboard
 94b1d16 fix: replace latest symlinks with real markdown files
 a87a133 docs: turn daily-reports homepage into a dashboard
 a6102e5 fix: sync open-source-watch into daily reports
-63ab3f4 Batch sync reports - 2026-03-20 12:31:19
+```
+
+### 工作区状态
+```text
+M scripts/update_dashboard.py
 ```
 
 ---
 
-## 6. 次要页面入口
+## 7. 次要页面入口
 
 ### 报告页
 - [早报目录](../morning-briefs/)
@@ -148,3 +161,4 @@ a6102e5 fix: sync open-source-watch into daily reports
 - 此页为主页面快照
 - 每 30 分钟自动刷新一次
 - 报告目录为次要页面，用于看详细内容和历史存档
+- “异常状态摘要”用于快速定位需关注问题
