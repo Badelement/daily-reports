@@ -58,6 +58,103 @@ class ReportPusher:
         for config in self.report_types.values():
             config['target_dir'].mkdir(parents=True, exist_ok=True)
     
+    def update_readme_homepage(self):
+        """更新仓库首页 README，使最新早报入口始终可见"""
+        readme_path = self.repo_path / 'README.md'
+        latest_morning = self.report_types['morning']['target_dir']
+        morning_files = sorted(latest_morning.glob('*-morning.md'))
+        latest_link_line = "- 暂无早报"
+        history_lines = ["- 暂无历史早报"]
+
+        if morning_files:
+            latest_file = morning_files[-1]
+            latest_link_line = f"- [{latest_file.stem.replace('-morning', '')} 早报](morning-briefs/{latest_file.name})"
+            history_lines = [
+                f"- [{f.stem.replace('-morning', '')}](morning-briefs/{f.name})"
+                for f in morning_files[-7:]
+            ]
+
+        content = f"""# 📊 Daily Reports
+
+OpenClaw 自动化汇报同步仓库。
+
+## 快速入口
+
+### 最新早报
+{latest_link_line}
+
+### 历史早报目录
+- [morning-briefs/](morning-briefs/)
+
+如果你打开仓库首页看不到内容，请直接点上面的链接。
+
+---
+
+## 当前仓库结构
+
+```text
+daily-reports/
+├── README.md
+├── SETUP_GUIDE.md
+├── morning-briefs/
+└── scripts/
+```
+
+---
+
+## 最近早报
+
+{chr(10).join(history_lines)}
+
+---
+
+## 同步方式
+
+### 自动流程
+1. OpenClaw 定时任务生成早报
+2. 保存到本地工作目录
+3. 自动提交到 `daily-reports`
+4. 推送到 GitHub 仓库
+
+---
+
+## 本地查看
+
+```bash
+git clone https://github.com/Badelement/daily-reports.git
+cd daily-reports
+git pull origin main
+cat morning-briefs/$(ls morning-briefs | sort | tail -1)
+```
+
+---
+
+## 手动检查同步状态
+
+```bash
+cd ~/.openclaw/workspace/daily-reports
+git log --oneline -5
+git status
+```
+
+---
+
+## 说明
+
+- 仓库现在已经公开，可直接网页查看
+- 如果首页看起来“空”，通常是因为内容在 `morning-briefs/` 子目录里
+- README 会在推送早报时自动更新“最新早报”入口
+
+---
+
+**最后更新**: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}  
+**维护者**: OpenClaw 自动化系统  
+**状态**: 🟢 可查看
+"""
+        
+        with open(readme_path, 'w', encoding='utf-8') as f:
+            f.write(content)
+    
     def get_latest_report(self, report_type):
         """获取最新报告"""
         if report_type not in self.report_types:
@@ -125,6 +222,10 @@ source_file: {source_file.name}
                 latest_link.unlink()
             latest_link.symlink_to(target_filename)
             logger.info(f"更新软链接: {latest_link} -> {target_filename}")
+
+            # 更新首页 README 中的最新入口
+            self.update_readme_homepage()
+            logger.info("已更新 README 首页入口")
             
             return True
             
