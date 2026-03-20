@@ -4,6 +4,7 @@
 """
 
 import os
+import re
 import sys
 from pathlib import Path
 from datetime import datetime, timedelta
@@ -56,20 +57,10 @@ class ReportSyncer:
     def extract_date_from_filename(self, filename, report_type):
         """从文件名提取日期"""
         try:
-            # 尝试不同的日期格式
-            date_str = None
-            
-            if report_type == 'security':
-                # 安全笔记格式: 2026-03-16-weekly-agent-security-notes.md
-                parts = filename.stem.split('-')
-                if len(parts) >= 3:
-                    date_str = '-'.join(parts[:3])
-            else:
-                # 其他格式: 2026-03-19-morning-brief.md
-                date_str = filename.stem.split('-')[0]
-            
-            if date_str:
-                return datetime.strptime(date_str, '%Y-%m-%d').date()
+            stem = filename.stem
+            match = re.match(r'^(\d{4}-\d{2}-\d{2})-', stem)
+            if match:
+                return datetime.strptime(match.group(1), '%Y-%m-%d').date()
         except Exception as e:
             logger.warning(f"无法从 {filename} 提取日期: {e}")
         
@@ -198,7 +189,7 @@ synced_by: batch_sync
             
             # 查找最新的文件
             pattern = f"*-{config['prefix']}.md"
-            files = list(target_dir.glob(pattern))
+            files = [f for f in target_dir.glob(pattern) if not f.name.startswith('latest-')]
             
             if not files:
                 logger.warning(f"未找到 {report_type} 文件")
