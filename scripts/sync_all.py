@@ -201,7 +201,7 @@ synced_by: batch_sync
             
             # 创建或更新软链接
             latest_link = target_dir / f"latest-{config['prefix']}.md"
-            if latest_link.exists():
+            if latest_link.exists() or latest_link.is_symlink():
                 latest_link.unlink()
             
             try:
