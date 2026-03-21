@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import re
 import subprocess
 from datetime import datetime
 from pathlib import Path
@@ -84,8 +85,6 @@ def derive_anomalies(session_text, gateway_text, cron_text, git_status):
     if 'queue:' in session_low and 'depth 0' not in session_low:
         anomalies.append('会话队列非空：存在待处理消息')
     if 'context:' in session_low:
-        # 简单检测上下文使用过高
-        import re
         m = re.search(r'context:\s*[^\n]*\((\d+)%\)', session_low)
         if m and int(m.group(1)) >= 80:
             anomalies.append(f'上下文占用偏高：{m.group(1)}%')
@@ -101,6 +100,74 @@ def derive_anomalies(session_text, gateway_text, cron_text, git_status):
     return anomalies
 
 
+def build_session_summary(session_text):
+    lines = session_text.splitlines()
+    summary = []
+
+    if 'Gateway service' in session_text and 'running' in session_text:
+        summary.append('- Gateway 服务：运行中')
+    elif 'Gateway service' in session_text:
+        summary.append('- Gateway 服务：状态异常或未运行')
+
+    if 'Telegram │ ON' in session_text or 'Telegram | ON' in session_text:
+        summary.append('- Telegram 通道：正常')
+
+    m = re.search(r'Sessions\s*│\s*(\d+) active', session_text)
+    if m:
+        summary.append(f'- 活跃会话数：{m.group(1)}')
+
+    m = re.search(r'Heartbeat\s*│\s*([^\n│]+)', session_text)
+    if m:
+        summary.append(f'- 心跳频率：{m.group(1).strip()}')
+
+    m = re.search(r'Context:\s*[^\n]*\((\d+)%\)', session_text, re.IGNORECASE)
+    if m:
+        summary.append(f'- 当前上下文占用：{m.group(1)}%')
+
+    return '\n'.join(summary) if summary else '- 暂时无法提取中文摘要，请查看下方原始状态'
+
+
+def build_gateway_summary(gateway_text):
+    summary = []
+    if 'LaunchAgent (loaded)' in gateway_text:
+        summary.append('- Gateway 服务已加载')
+    if 'bind=loopback' in gateway_text:
+        summary.append('- 当前仅监听本机回环地址')
+    m = re.search(r'port=(\d+)', gateway_text)
+    if m:
+        summary.append(f'- 监听端口：{m.group(1)}')
+    if 'Dashboard: disabled' in gateway_text:
+        summary.append('- OpenClaw 内建 dashboard：关闭')
+    return '\n'.join(summary) if summary else '- 暂时无法提取中文摘要，请查看下方原始状态'
+
+
+def build_cron_summary(cron_text):
+    lines = [line for line in cron_text.splitlines() if line.strip()]
+    summary = []
+    job_lines = [line for line in lines if re.match(r'^[a-f0-9-]{8,}', line)]
+    if job_lines:
+        summary.append(f'- 定时任务数量：{len(job_lines)}')
+    ok_count = sum(1 for line in job_lines if ' ok ' in f' {line} ')
+    if job_lines:
+        summary.append(f'- 最近状态正常的任务：{ok_count}/{len(job_lines)}')
+    if any('daily-reports-dashboa' in line for line in job_lines):
+        summary.append('- dashboard 刷新任务：已在列表中')
+    return '\n'.join(summary) if summary else '- 暂时无法提取中文摘要，请查看下方原始状态'
+
+
+def build_repo_summary(git_log, git_status):
+    summary = []
+    first_commit = git_log.splitlines()[0].strip() if git_log.strip() else ''
+    if first_commit:
+        summary.append(f'- 最近一次提交：{first_commit}')
+    if git_status.strip():
+        changed = len([line for line in git_status.splitlines() if line.strip()])
+        summary.append(f'- 工作区有未提交更改：{changed} 项')
+    else:
+        summary.append('- 工作区状态：干净')
+    return '\n'.join(summary) if summary else '- 暂时无法提取中文摘要，请查看下方原始状态'
+
+
 def write_dashboard():
     now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     counts = get_report_counts()
@@ -110,6 +177,10 @@ def write_dashboard():
     git_log = get_git_log()
     git_status = get_git_porcelain()
     anomalies = derive_anomalies(session_status, gateway_status, cron_list, git_status)
+    session_summary = build_session_summary(session_status)
+    gateway_summary = build_gateway_summary(gateway_status)
+    cron_summary = build_cron_summary(cron_list)
+    repo_summary = build_repo_summary(git_log, git_status)
 
     anomaly_block = '\n'.join([f'- {a}' if not a.startswith('- ') else a for a in anomalies]) if anomalies else '- 当前未发现明显异常'
     git_status_block = git_status if git_status.strip() else 'working tree clean'
@@ -146,6 +217,10 @@ def write_dashboard():
 
 ## 3. OpenClaw 会话状态
 
+### 中文摘要
+{session_summary}
+
+### 原始状态
 ```text
 {session_status}
 ```
@@ -154,6 +229,10 @@ def write_dashboard():
 
 ## 4. Gateway 状态
 
+### 中文摘要
+{gateway_summary}
+
+### 原始状态
 ```text
 {gateway_status}
 ```
@@ -162,6 +241,10 @@ def write_dashboard():
 
 ## 5. Cron 状态
 
+### 中文摘要
+{cron_summary}
+
+### 原始状态
 ```text
 {cron_list}
 ```
@@ -169,6 +252,9 @@ def write_dashboard():
 ---
 
 ## 6. 仓库状态
+
+### 中文摘要
+{repo_summary}
 
 ### 最近提交
 ```text

@@ -2,7 +2,7 @@
 
 主监控页。用于集中查看 OpenClaw 当前运行状态，并作为这个仓库的状态入口页。
 
-**更新时间**: 2026-03-21 13:42:07 (Asia/Shanghai)
+**更新时间**: 2026-03-21 14:47:59 (Asia/Shanghai)
 
 ---
 
@@ -30,6 +30,13 @@
 
 ## 3. OpenClaw 会话状态
 
+### 中文摘要
+- Gateway 服务：运行中
+- Telegram 通道：正常
+- 活跃会话数：12
+- 心跳频率：30m (main)
+
+### 原始状态
 ```text
 OpenClaw status
 
@@ -45,12 +52,12 @@ Overview
 │ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
 │ Gateway service │ LaunchAgent installed · loaded · running (pid 69349, state active)                                 │
 │ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
-│ Agents          │ 1 · no bootstrap files · sessions 10 · default main active 1m ago                                  │
+│ Agents          │ 1 · no bootstrap files · sessions 12 · default main active just now                                │
 │ Memory          │ enabled (plugin memory-core) · unavailable                                                         │
 │ Probes          │ skipped (use --deep)                                                                               │
 │ Events          │ none                                                                                               │
 │ Heartbeat       │ 30m (main)                                                                                         │
-│ Sessions        │ 10 active · default deepseek-chat (128k ctx) · ~/.openclaw/agents/main/sessions/sessions.json      │
+│ Sessions        │ 12 active · default deepseek-chat (128k ctx) · ~/.openclaw/agents/main/sessions/sessions.json      │
 └─────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────┘
 
 Security audit
@@ -67,20 +74,20 @@ Channels
 └──────────┴─────────┴────────┴────────────────────────────────────────────────────────────────────────────────────────┘
 
 Sessions
-┌────────────────────────────────────────────────┬────────┬─────────┬───────────────┬──────────────────────────────────┐
-│ Key                                            │ Kind   │ Age     │ Model         │ Tokens                           │
-├────────────────────────────────────────────────┼────────┼─────────┼───────────────┼──────────────────────────────────┤
-│ agent:main:telegram:direct:7310…               │ direct │ 1m ago  │ gpt-5.4       │ 92k/272k (34%) · 🗄️ 91% cached   │
-│ agent:main:main                                │ direct │ 4m ago  │ deepseek-chat │ 73k/128k (57%) · 🗄️ 100% cached  │
-│ agent:main:cron:9fea7709-95fe-4…               │ direct │ 5h ago  │ deepseek-chat │ 12k/128k (9%) · 🗄️ 1450% cached  │
-│ agent:main:cron:9fea7709-95fe-4…               │ direct │ 5h ago  │ deepseek-chat │ 12k/128k (9%) · 🗄️ 1450% cached  │
-│ agent:main:cron:bbbba49f-c5d4-4…               │ direct │ 16h ago │ deepseek-chat │ 17k/128k (13%) · 🗄️ 937% cached  │
-│ agent:main:cron:bbbba49f-c5d4-4…               │ direct │ 16h ago │ deepseek-chat │ 17k/128k (13%) · 🗄️ 937% cached  │
-│ agent:main:cron:ef3bb9db-238b-4…               │ direct │ 18h ago │ deepseek-chat │ 9.3k/128k (7%) · 🗄️ 560% cached  │
-│ agent:main:cron:ef3bb9db-238b-4…               │ direct │ 18h ago │ deepseek-chat │ 9.3k/128k (7%) · 🗄️ 560% cached  │
-│ agent:main:cron:6b5c0215-c791-4…               │ direct │ 6d ago  │ deepseek-chat │ 17k/128k (14%) · 🗄️ 1173% cached │
-│ agent:main:telegram:slash:73103…               │ direct │ 6d ago  │ deepseek-chat │ unknown/128k (?%)                │
-└────────────────────────────────────────────────┴────────┴─────────┴───────────────┴──────────────────────────────────┘
+┌────────────────────────────────────────────────┬────────┬──────────┬───────────────┬─────────────────────────────────┐
+│ Key                                            │ Kind   │ Age      │ Model         │ Tokens                          │
+├────────────────────────────────────────────────┼────────┼──────────┼───────────────┼─────────────────────────────────┤
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ just now │ deepseek-chat │ unknown/128k (?%)               │
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ just now │ deepseek-chat │ unknown/128k (?%)               │
+│ agent:main:main                                │ direct │ 9m ago   │ deepseek-chat │ 77k/128k (61%) · 🗄️ 100% cached │
+│ agent:main:telegram:direct:7310…               │ direct │ 25m ago  │ gpt-5.4       │ 114k/272k (42%) · 🗄️ 99% cached │
+│ agent:main:cron:9fea7709-95fe-4…               │ direct │ 6h ago   │ deepseek-chat │ 12k/128k (9%) · 🗄️ 1450% cached │
+│ agent:main:cron:9fea7709-95fe-4…               │ direct │ 6h ago   │ deepseek-chat │ 12k/128k (9%) · 🗄️ 1450% cached │
+│ agent:main:cron:bbbba49f-c5d4-4…               │ direct │ 17h ago  │ deepseek-chat │ 17k/128k (13%) · 🗄️ 937% cached │
+│ agent:main:cron:bbbba49f-c5d4-4…               │ direct │ 17h ago  │ deepseek-chat │ 17k/128k (13%) · 🗄️ 937% cached │
+│ agent:main:cron:ef3bb9db-238b-4…               │ direct │ 20h ago  │ deepseek-chat │ 9.3k/128k (7%) · 🗄️ 560% cached │
+│ agent:main:cron:ef3bb9db-238b-4…               │ direct │ 20h ago  │ deepseek-chat │ 9.3k/128k (7%) · 🗄️ 560% cached │
+└────────────────────────────────────────────────┴────────┴──────────┴───────────────┴─────────────────────────────────┘
 
 FAQ: https://docs.openclaw.ai/faq
 Troubleshooting: https://docs.openclaw.ai/troubleshooting
@@ -95,6 +102,13 @@ Next steps:
 
 ## 4. Gateway 状态
 
+### 中文摘要
+- Gateway 服务已加载
+- 当前仅监听本机回环地址
+- 监听端口：18789
+- OpenClaw 内建 dashboard：关闭
+
+### 原始状态
 ```text
 Service: LaunchAgent (loaded)
 File logs: /tmp/openclaw/openclaw-2026-03-21.log
@@ -114,12 +128,18 @@ Dashboard: disabled
 
 ## 5. Cron 状态
 
+### 中文摘要
+- 定时任务数量：5
+- 最近状态正常的任务：4/5
+- dashboard 刷新任务：已在列表中
+
+### 原始状态
 ```text
 ID                                   Name                     Schedule                         Next       Last       Status    Target    Agent ID   Model               
-d2e5fda8-439e-44e2-b475-cdfb4a96c0b0 daily-reports-dashboa... every 30m                        in 6m      23h ago    ok        main      main       -
-ef3bb9db-238b-4e6b-9dda-dbc79e87a541 open-source-watch-for... cron 15 19 * * * @ Asia/Shang... in 6h      18h ago    ok        isolated  main       deepseek/deepseek...
-bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @ Asia/Shang... in 8h      16h ago    ok        isolated  -          deepseek/deepseek...
-9fea7709-95fe-462f-b38c-752efed139b0 morning-intel-brief      cron 20 8 * * * @ Asia/Shangh... in 19h     5h ago     ok        isolated  -          deepseek/deepseek...
+d2e5fda8-439e-44e2-b475-cdfb4a96c0b0 daily-reports-dashboa... every 30m                        <1m ago    30m ago    running   isolated  main       deepseek/deepseek...
+ef3bb9db-238b-4e6b-9dda-dbc79e87a541 open-source-watch-for... cron 15 19 * * * @ Asia/Shang... in 4h      20h ago    ok        isolated  main       deepseek/deepseek...
+bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @ Asia/Shang... in 7h      17h ago    ok        isolated  -          deepseek/deepseek...
+9fea7709-95fe-462f-b38c-752efed139b0 morning-intel-brief      cron 20 8 * * * @ Asia/Shangh... in 18h     6h ago     ok        isolated  -          deepseek/deepseek...
 6b5c0215-c791-4e55-bcd6-64abd24afbb9 weekly-agent-security... cron 30 20 * * 0 @ Asia/Shang... in 1d      6d ago     ok        isolated  main       deepseek/deepseek...
 ```
 
@@ -127,20 +147,23 @@ bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @
 
 ## 6. 仓库状态
 
+### 中文摘要
+- 最近一次提交：584d81a docs: align daily-reports structure and dashboard navigation
+- 工作区有未提交更改：2 项
+
 ### 最近提交
 ```text
+584d81a docs: align daily-reports structure and dashboard navigation
 01499a6 Update reports - 2026-03-21 08:21:08
 c24b843 feat: add anomaly summary to monitoring dashboard
 04c3133 feat: promote monitoring dashboard as primary homepage
 9f79d1d feat: add OpenClaw session status page to dashboard
-94b1d16 fix: replace latest symlinks with real markdown files
 ```
 
 ### 工作区状态
 ```text
-M README.md
- M SETUP_GUIDE.md
- M scripts/update_dashboard.py
+M scripts/update_dashboard.py
+ M status/system-dashboard.md
 ```
 
 ---
