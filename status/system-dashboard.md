@@ -2,7 +2,7 @@
 
 主监控页。用于集中查看 OpenClaw 当前运行状态，并作为这个仓库的状态入口页。
 
-**更新时间**: 2026-03-21 23:47:59 (Asia/Shanghai)
+**更新时间**: 2026-03-22 00:17:59 (Asia/Shanghai)
 
 ---
 
@@ -33,7 +33,7 @@
 ### 中文摘要
 - Gateway 服务：运行中
 - Telegram 通道：正常
-- 活跃会话数：30
+- 活跃会话数：31
 - 心跳频率：30m (main)
 
 ### 原始状态
@@ -52,12 +52,12 @@ Overview
 │ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
 │ Gateway service │ LaunchAgent installed · loaded · running (pid 69349, state active)                                 │
 │ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
-│ Agents          │ 1 · no bootstrap files · sessions 30 · default main active just now                                │
+│ Agents          │ 1 · no bootstrap files · sessions 31 · default main active just now                                │
 │ Memory          │ enabled (plugin memory-core) · unavailable                                                         │
 │ Probes          │ skipped (use --deep)                                                                               │
 │ Events          │ none                                                                                               │
 │ Heartbeat       │ 30m (main)                                                                                         │
-│ Sessions        │ 30 active · default deepseek-chat (128k ctx) · ~/.openclaw/agents/main/sessions/sessions.json      │
+│ Sessions        │ 31 active · default deepseek-chat (128k ctx) · ~/.openclaw/agents/main/sessions/sessions.json      │
 └─────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────┘
 
 Security audit
@@ -77,16 +77,16 @@ Sessions
 ┌───────────────────────────────────────────────┬────────┬──────────┬───────────────┬──────────────────────────────────┐
 │ Key                                           │ Kind   │ Age      │ Model         │ Tokens                           │
 ├───────────────────────────────────────────────┼────────┼──────────┼───────────────┼──────────────────────────────────┤
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 16k/128k (12%) · 🗄️ 646% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 16k/128k (12%) · 🗄️ 646% cached  │
-│ agent:main:main                               │ direct │ 9m ago   │ deepseek-chat │ 96k/128k (75%) · 🗄️ 100% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 30m ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 646% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 1h ago   │ deepseek-chat │ 19k/128k (15%) · 🗄️ 890% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 15k/128k (11%) · 🗄️ 817% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 15k/128k (11%) · 🗄️ 817% cached  │
+│ agent:main:main                               │ direct │ 7m ago   │ deepseek-chat │ 94k/128k (73%) · 🗄️ 100% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 30m ago  │ deepseek-chat │ 15k/128k (11%) · 🗄️ 817% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 1h ago   │ deepseek-chat │ 16k/128k (12%) · 🗄️ 646% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 2h ago   │ deepseek-chat │ 19k/128k (15%) · 🗄️ 890% cached  │
 │ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 2h ago   │ deepseek-chat │ 16k/128k (13%) · 🗄️ 926% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 2h ago   │ deepseek-chat │ 16k/128k (12%) · 🗄️ 647% cached  │
-│ agent:main:cron:bbbba49f-c5d4-4…              │ direct │ 2h ago   │ deepseek-chat │ 17k/128k (14%) · 🗄️ 1434% cached │
-│ agent:main:cron:bbbba49f-c5d4-4…              │ direct │ 2h ago   │ deepseek-chat │ 17k/128k (14%) · 🗄️ 1434% cached │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 3h ago   │ deepseek-chat │ 15k/128k (11%) · 🗄️ 1006% cached │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 3h ago   │ deepseek-chat │ 16k/128k (12%) · 🗄️ 647% cached  │
+│ agent:main:cron:bbbba49f-c5d4-4…              │ direct │ 3h ago   │ deepseek-chat │ 17k/128k (14%) · 🗄️ 1434% cached │
+│ agent:main:cron:bbbba49f-c5d4-4…              │ direct │ 3h ago   │ deepseek-chat │ 17k/128k (14%) · 🗄️ 1434% cached │
 └───────────────────────────────────────────────┴────────┴──────────┴───────────────┴──────────────────────────────────┘
 
 FAQ: https://docs.openclaw.ai/faq
@@ -111,7 +111,7 @@ Next steps:
 ### 原始状态
 ```text
 Service: LaunchAgent (loaded)
-File logs: /tmp/openclaw/openclaw-2026-03-21.log
+File logs: /tmp/openclaw/openclaw-2026-03-22.log
 Command: /Users/badelement/.local/node-v22.22.1-darwin-arm64/bin/node /Users/badelement/.npm-global/lib/node_modules/openclaw/dist/index.js gateway --port 18789
 Service file: ~/Library/LaunchAgents/ai.openclaw.gateway.plist
 Service env: OPENCLAW_GATEWAY_PORT=18789
@@ -137,10 +137,10 @@ Dashboard: disabled
 ```text
 ID                                   Name                     Schedule                         Next       Last       Status    Target    Agent ID   Model               
 d2e5fda8-439e-44e2-b475-cdfb4a96c0b0 daily-reports-dashboa... every 30m                        <1m ago    30m ago    running   isolated  main       deepseek/deepseek...
-9fea7709-95fe-462f-b38c-752efed139b0 morning-intel-brief      cron 20 8 * * * @ Asia/Shangh... in 9h      15h ago    ok        isolated  -          deepseek/deepseek...
+9fea7709-95fe-462f-b38c-752efed139b0 morning-intel-brief      cron 20 8 * * * @ Asia/Shangh... in 8h      16h ago    ok        isolated  -          deepseek/deepseek...
 ef3bb9db-238b-4e6b-9dda-dbc79e87a541 open-source-watch-for... cron 15 19 * * * @ Asia/Shang... in 19h     5h ago     ok        isolated  main       deepseek/deepseek...
-6b5c0215-c791-4e55-bcd6-64abd24afbb9 weekly-agent-security... cron 30 20 * * 0 @ Asia/Shang... in 21h     6d ago     ok        isolated  main       deepseek/deepseek...
-bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @ Asia/Shang... in 22h     2h ago     ok        isolated  -          deepseek/deepseek...
+6b5c0215-c791-4e55-bcd6-64abd24afbb9 weekly-agent-security... cron 30 20 * * 0 @ Asia/Shang... in 20h     6d ago     ok        isolated  main       deepseek/deepseek...
+bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @ Asia/Shang... in 21h     3h ago     ok        isolated  -          deepseek/deepseek...
 ```
 
 ---
@@ -148,16 +148,16 @@ bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @
 ## 6. 仓库状态
 
 ### 中文摘要
-- 最近一次提交：e9cebec Auto-update: dashboard refresh at 2026-03-21 23:18:14
+- 最近一次提交：2d0d809 chore: update system dashboard status snapshot [cron:d2e5fda8-439e-44e2-b475-cdfb4a96c0b0]
 - 工作区状态：干净
 
 ### 最近提交
 ```text
+2d0d809 chore: update system dashboard status snapshot [cron:d2e5fda8-439e-44e2-b475-cdfb4a96c0b0]
 e9cebec Auto-update: dashboard refresh at 2026-03-21 23:18:14
 e5377e6 chore: update system dashboard status snapshot [cron:d2e5fda8-439e-44e2-b475-cdfb4a96c0b0]
 06bc6e4 cron: dashboard refresh at 2026-03-21 22:18:23
 0fc7a1a dashboard: auto-refresh at 2026-03-21 21:48:13
-5c5fe8a chore: update system dashboard status snapshot [cron:d2e5fda8-439e-44e2-b475-cdfb4a96c0b0]
 ```
 
 ### 工作区状态
