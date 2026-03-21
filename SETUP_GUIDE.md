@@ -1,241 +1,121 @@
-# GitHub汇报同步系统 - 设置指南
+# daily-reports 维护说明
 
-## 🎯 目标
-将OpenClaw的定时汇报自动同步到GitHub私有仓库，实现：
-1. 永久存档
-2. 多设备访问
-3. 版本历史
-4. 搜索整理
+这份文档描述 **daily-reports 当前的真实用途**，不再是仓库初始化待办清单。
 
-## 📋 前提条件
+## 仓库定位
 
-### 已完成的
-✅ 本地仓库结构已创建 (`~/.openclaw/workspace/daily-reports/`)  
-✅ 推送脚本已开发 (`scripts/push_report.py`)  
-✅ 批量同步脚本已开发 (`scripts/sync_all.py`)  
-✅ 早报任务修改方案已准备  
+`daily-reports` 是 OpenClaw 的：
+- 报告归档仓库
+- 状态快照仓库
+- 自动同步输出仓库
 
-### 需要你完成的
-1. 创建GitHub私有仓库
-2. 配置远程仓库
-3. 测试推送功能
-4. 修改定时任务
+## 当前内容
 
-## 🚀 实施步骤
+### 报告目录
+- `morning-briefs/`：每日早报
+- `evening-reviews/`：晚间复盘
+- `weekly-security/`：每周安全笔记
+- `open-source-watch/`：开源观察
 
-### 步骤1：创建GitHub私有仓库
+### 状态目录
+- `status/system-dashboard.md`：主监控页
+- `status/openclaw-session-status.md`：会话状态快照
 
-1. 访问 https://github.com/new
-2. 填写信息：
-   - **Repository name**: `daily-reports`
-   - **Description**: `OpenClaw每日汇报同步中心`
-   - **Visibility**: ⚫ **Private** (必须私有！)
-   - 不要勾选 "Initialize this repository with a README"
-3. 点击 "Create repository"
-4. 复制仓库URL：`https://github.com/Badelement/daily-reports.git`
-
-### 步骤2：配置本地仓库
-
-```bash
-# 1. 进入仓库目录
-cd ~/.openclaw/workspace/daily-reports
-
-# 2. 添加远程仓库（替换YOUR_URL为实际URL）
-git remote add origin https://github.com/Badelement/daily-reports.git
-
-# 3. 推送初始代码
-git push -u origin main
-
-# 4. 验证配置
-git remote -v
-# 应该显示：
-# origin  https://github.com/Badelement/daily-reports.git (fetch)
-# origin  https://github.com/Badelement/daily-reports.git (push)
-```
-
-### 步骤3：测试推送功能
-
-```bash
-# 1. 测试推送脚本
-cd ~/.openclaw/workspace/daily-reports
-python scripts/push_report.py --type morning
-
-# 2. 如果失败，检查：
-# - GitHub访问权限（可能需要Personal Access Token）
-# - 网络连接
-# - 脚本权限：chmod +x scripts/*.py
-
-# 3. 批量同步历史报告（可选）
-python scripts/sync_all.py --days 7
-```
-
-### 步骤4：修改早报定时任务
-
-```bash
-# 运行修改脚本
-bash ~/.openclaw/workspace/update_morning_task.sh
-
-# 或者手动执行：
-openclaw cron update 9fea7709-95fe-462f-b38c-752efed139b0 --patch '{
-  "payload": {
-    "message": "请生成早报...（完整内容见脚本）"
-  }
-}'
-```
-
-### 步骤5：验证修改
-
-```bash
-# 1. 查看修改后的任务
-openclaw cron list
-
-# 2. 手动触发测试
-openclaw cron run 9fea7709-95fe-462f-b38c-752efed139b0
-
-# 3. 检查结果：
-# - 本地文件：~/.openclaw/workspace/briefings/
-# - GitHub仓库：https://github.com/Badelement/daily-reports
-# - Telegram：应该收到摘要
-```
-
-### 步骤6：修改其他任务（可选）
-
-早报任务测试成功后，可以修改其他任务：
-1. 晚间复盘任务ID: `bbbba49f-c5d4-4690-b1be-3616a294cc26`
-2. 开源观察任务ID: `ef3bb9db-238b-4e6b-9dda-dbc79e87a541`
-3. 每周安全任务ID: `6b5c0215-c791-4e55-bcd6-64abd24afbb9`
-
-## 🔧 故障排除
-
-### 常见问题1：Git推送权限错误
-```bash
-# 解决方案：使用Personal Access Token
-# 1. 生成Token：GitHub → Settings → Developer settings → Personal access tokens
-# 2. 选择权限：repo (全部)
-# 3. 修改远程URL：
-git remote set-url origin https://YOUR_TOKEN@github.com/Badelement/daily-reports.git
-```
-
-### 常见问题2：Python脚本执行错误
-```bash
-# 1. 检查Python版本
-python3 --version
-
-# 2. 安装依赖（如果需要）
-pip3 install -r requirements.txt
-
-# 3. 检查脚本权限
-chmod +x scripts/*.py
-
-# 4. 查看日志
-tail -f /tmp/openclaw_report_push.log
-```
-
-### 常见问题3：定时任务不执行
-```bash
-# 1. 检查任务状态
-openclaw cron list
-
-# 2. 检查Gateway状态
-openclaw gateway status
-
-# 3. 查看日志
-tail -f /tmp/openclaw/openclaw-*.log
-
-# 4. 手动触发测试
-openclaw cron run <task_id>
-```
-
-## 📊 验证成功
-
-### 成功标志
-1. ✅ GitHub仓库有文件：`morning-briefs/2026-03-19-morning.md`
-2. ✅ 本地软链接更新：`morning-briefs/latest-morning.md`
-3. ✅ Telegram收到摘要
-4. ✅ Git提交历史正常
-
-### 检查清单
-- [ ] GitHub仓库创建成功（私有）
-- [ ] 远程仓库配置成功
-- [ ] 推送脚本测试通过
-- [ ] 早报任务修改成功
-- [ ] 自动推送测试通过
-- [ ] 所有报告类型都同步
-
-## 🎨 使用方式
-
-### 查看报告
-1. **GitHub网页**：直接浏览文件
-2. **本地查看**：
-   ```bash
-   cd ~/.openclaw/workspace/daily-reports
-   git pull
-   cat morning-briefs/latest-morning.md
-   ```
-3. **搜索功能**：
-   ```bash
-   # 搜索包含特定标签的报告
-   grep -r "#openclaw" morning-briefs/
-   
-   # 按日期查找
-   find . -name "2026-03-*.md" -type f
-   ```
-
-### 管理仓库
-```bash
-# 更新仓库
-cd ~/.openclaw/workspace/daily-reports
-git pull origin main
-
-# 查看历史
-git log --oneline -10
-
-# 强制同步
-python scripts/sync_all.py --days 30
-```
-
-## 🔄 后续优化
-
-### 阶段2：修改所有任务
-早报任务成功后，批量修改其他任务：
-```bash
-# 创建批量修改脚本
-python ~/.openclaw/workspace/create_batch_update.py
-```
-
-### 阶段3：添加统计功能
-- 月度汇总报告
-- 标签使用统计
-- 热门话题分析
-
-### 阶段4：集成GitHub Actions
-- 自动生成索引页面
-- 定期清理旧文件
-- 备份到其他存储
-
-## 📞 支持
-
-### 遇到问题？
-1. 检查日志：`/tmp/openclaw_report_push.log`
-2. 查看任务状态：`openclaw cron list`
-3. 手动测试：`python scripts/push_report.py --type morning`
-
-### 需要帮助？
-提供以下信息：
-1. 错误信息
-2. 相关日志
-3. 当前状态截图
+### 脚本目录
+- `scripts/push_report.py`：推送单类报告
+- `scripts/sync_all.py`：批量同步历史内容
+- `scripts/update_dashboard.py`：刷新 dashboard 与状态摘要
 
 ---
 
-**最后更新**: 2026-03-19  
-**状态**: 🟡 等待GitHub仓库创建
+## 当前运行方式
 
-## 🚨 重要提醒
+### 自动流程
+1. OpenClaw 定时任务生成报告或状态快照
+2. 文件写入本地工作目录
+3. 推送脚本提交到 `daily-reports`
+4. 自动推送到 GitHub 仓库
 
-1. **必须使用私有仓库**，避免敏感信息泄露
-2. 首次推送可能需要GitHub身份验证
-3. 建议先测试，再批量修改任务
-4. 保持本地备份 (`~/.openclaw/workspace/`) 作为冗余
+### 当前仓库属性
+- GitHub 仓库：`https://github.com/Badelement/daily-reports`
+- 当前可见性：**Public**
 
-**完成步骤1（创建GitHub仓库）后告诉我URL，我帮你完成后续配置！**
+如果后续要改为私有仓库，应同步调整 README、维护说明和推送方式说明。
+
+---
+
+## 常用维护命令
+
+### 查看仓库状态
+```bash
+cd ~/.openclaw/workspace/daily-reports
+git status
+git log --oneline -5
+```
+
+### 手动推送某类报告
+```bash
+cd ~/.openclaw/workspace/daily-reports
+python3 scripts/push_report.py --type morning
+python3 scripts/push_report.py --type evening
+python3 scripts/push_report.py --type security
+python3 scripts/push_report.py --type watch
+```
+
+### 手动刷新 dashboard
+```bash
+cd ~/.openclaw/workspace/daily-reports
+python3 scripts/update_dashboard.py
+```
+
+### 批量同步
+```bash
+cd ~/.openclaw/workspace/daily-reports
+python3 scripts/sync_all.py --days 7
+```
+
+---
+
+## 常见问题
+
+### 1. 首页看起来内容不全
+先看：
+- `README.md`
+- `status/system-dashboard.md`
+
+首页只负责导航，详细内容在子目录里。
+
+### 2. dashboard 内容过期
+先运行：
+```bash
+python3 scripts/update_dashboard.py
+```
+然后检查是否有新提交或未推送变更。
+
+### 3. 自动任务正常，但仓库没更新
+检查：
+```bash
+openclaw cron list
+git -C ~/.openclaw/workspace/daily-reports status
+git -C ~/.openclaw/workspace/daily-reports log --oneline -5
+```
+
+### 4. 推送失败
+通常先检查：
+- GitHub 认证
+- 远程仓库 URL
+- 本地工作区是否有冲突
+
+---
+
+## 维护原则
+
+- 不把这个仓库再写成“只有早报”的单用途仓库
+- 首页文档要和真实目录结构一致
+- status 页负责系统状态，reports 页负责内容归档
+- 优先小改动，不随便迁移历史文件
+
+---
+
+**最后更新**: 2026-03-21
+**状态**: 🟢 按当前自动化流程维护中

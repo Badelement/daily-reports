@@ -61,7 +61,7 @@ def latest_file_line(folder, label):
     if not files:
         return f'- {label}: 暂无'
     latest = files[-1].name
-    return f'- {label}: [{latest}]({folder}/{latest})'
+    return f'- {label}: [{latest}](../{folder}/{latest})'
 
 
 def parse_cron_anomalies(cron_text):
@@ -116,7 +116,7 @@ def write_dashboard():
 
     content = f'''# 🖥️ OpenClaw System Dashboard
 
-主监控页。这个页面优先于报告页，用于集中查看 OpenClaw 当前运行状态。
+主监控页。用于集中查看 OpenClaw 当前运行状态，并作为这个仓库的状态入口页。
 
 **更新时间**: {now} (Asia/Shanghai)
 
@@ -192,14 +192,15 @@ def write_dashboard():
 
 ### 状态页
 - [会话状态](openclaw-session-status.md)
+- [仓库首页](../README.md)
 
 ---
 
 ## 说明
 
-- 此页为主页面快照
+- 此页为状态总览页
 - 每 30 分钟自动刷新一次
-- 报告目录为次要页面，用于看详细内容和历史存档
+- 报告目录用于查看详细内容和历史存档
 - “异常状态摘要”用于快速定位需关注问题
 '''
     (STATUS_DIR / 'system-dashboard.md').write_text(content, encoding='utf-8')
