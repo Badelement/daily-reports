@@ -1,10 +1,10 @@
 # OpenClaw Session Status
 
-更新时间：2026-03-22 19:18 (Asia/Shanghai)
+更新时间：2026-03-23 01:19 (Asia/Shanghai)
 
 ## 当前主会话状态
 
-- **模型**：`Key`
+- **模型**：`Kind`
 - **认证方式**：`telegram`
 - **当前会话**：`agent:main:cron:d2e5fda8-439e-4…`
 - **运行模式**：`direct`
@@ -56,20 +56,20 @@ Channels
 └──────────┴─────────┴────────┴────────────────────────────────────────────────────────────────────────────────────────┘
 
 Sessions
-┌────────────────────────────────────────────────┬────────┬─────────┬───────────────┬──────────────────────────────────┐
-│ Key                                            │ Kind   │ Age     │ Model         │ Tokens                           │
-├────────────────────────────────────────────────┼────────┼─────────┼───────────────┼──────────────────────────────────┤
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 1m ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 832% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 1m ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 832% cached  │
-│ agent:main:cron:ef3bb9db-238b-4…               │ direct │ 3m ago  │ deepseek-chat │ 18k/128k (14%) · 🗄️ 1073% cached │
-│ agent:main:cron:ef3bb9db-238b-4…               │ direct │ 3m ago  │ deepseek-chat │ 18k/128k (14%) · 🗄️ 1073% cached │
-│ agent:main:main                                │ direct │ 9m ago  │ deepseek-chat │ 94k/128k (73%) · 🗄️ 51% cached   │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 31m ago │ deepseek-chat │ 16k/128k (12%) · 🗄️ 832% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 1h ago  │ deepseek-chat │ 15k/128k (12%) · 🗄️ 791% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 2h ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 648% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 2h ago  │ deepseek-chat │ 15k/128k (12%) · 🗄️ 793% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 3h ago  │ deepseek-chat │ 13k/128k (10%) · 🗄️ 671% cached  │
-└────────────────────────────────────────────────┴────────┴─────────┴───────────────┴──────────────────────────────────┘
+┌─────────────────────────────────────────────────┬────────┬─────────┬───────────────┬─────────────────────────────────┐
+│ Key                                             │ Kind   │ Age     │ Model         │ Tokens                          │
+├─────────────────────────────────────────────────┼────────┼─────────┼───────────────┼─────────────────────────────────┤
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 1m ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 647% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 1m ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 647% cached │
+│ agent:main:main                                 │ direct │ 10m ago │ deepseek-chat │ 102k/128k (80%) · 🗄️ 66% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 31m ago │ deepseek-chat │ 16k/128k (12%) · 🗄️ 647% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 1h ago  │ deepseek-chat │ 21k/128k (16%) · 🗄️ 757% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2h ago  │ deepseek-chat │ 13k/128k (10%) · 🗄️ 673% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2h ago  │ deepseek-chat │ 15k/128k (12%) · 🗄️ 791% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 3h ago  │ deepseek-chat │ 13k/128k (11%) · 🗄️ 668% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 3h ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 740% cached │
+│ agent:main:telegram:direct:7310…                │ direct │ 3h ago  │ deepseek-chat │ 46k/128k (36%) · 🗄️ 100% cached │
+└─────────────────────────────────────────────────┴────────┴─────────┴───────────────┴─────────────────────────────────┘
 
 FAQ: https://docs.openclaw.ai/faq
 Troubleshooting: https://docs.openclaw.ai/troubleshooting
@@ -84,7 +84,6 @@ Next steps:
 
 ## 说明
 
-- 此文件为 OpenClaw 会话状态快照
-- 每 30 分钟随仪表板一起更新
-- 用于追踪会话状态和资源使用情况
-- 原始状态快照可用于故障排查
+- 此页为 OpenClaw 会话状态快照
+- 每 30 分钟随 dashboard 一起更新
+- 用于快速查看当前会话状态和资源使用情况
