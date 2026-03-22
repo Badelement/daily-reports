@@ -1,72 +1,66 @@
-# 📊 daily-reports
+# 📊 Daily Reports
 
-OpenClaw 自动化**报告与状态快照**仓库。
-
-这个仓库现在承载两类内容：
-- **reports**：早报、晚间复盘、每周安全笔记、开源观察
-- **status**：系统 dashboard、会话状态、运行快照
-
----
+OpenClaw 自动化汇报同步仓库。
 
 ## 快速入口
 
-### 主入口
-- [系统 Dashboard](status/system-dashboard.md)
+### 最新早报
+- [latest 早报](morning-briefs/latest-morning.md)
 
-### 最新报告
-- [最新早报](morning-briefs/latest-morning.md)
-- [最新复盘](evening-reviews/latest-evening.md)
-- [最新安全笔记](weekly-security/latest-security.md)
-- [最新开源观察](open-source-watch/latest-watch.md)
+### 历史早报目录
+- [morning-briefs/](morning-briefs/)
+
+如果你打开仓库首页看不到内容，请直接点上面的链接。
 
 ---
 
-## 仓库结构
+## 当前仓库结构
 
 ```text
 daily-reports/
 ├── README.md
 ├── SETUP_GUIDE.md
-├── morning-briefs/       # 每日早报
-├── evening-reviews/      # 晚间复盘
-├── weekly-security/      # 每周安全笔记
-├── open-source-watch/    # 开源观察
-├── status/               # dashboard 与系统状态快照
-└── scripts/              # 推送、同步、dashboard 生成脚本
+├── morning-briefs/
+└── scripts/
 ```
 
 ---
 
-## 自动更新内容
+## 最近早报
 
-### 报告类
-- 早报
-- 晚间复盘
-- 每周安全笔记
-- 开源观察
-
-### 状态类
-- Dashboard 总览页
-- OpenClaw 会话状态快照
-- 仓库状态摘要
+- [2026-03-17](morning-briefs/2026-03-17-morning.md)
+- [2026-03-18](morning-briefs/2026-03-18-morning.md)
+- [2026-03-19](morning-briefs/2026-03-19-morning.md)
+- [2026-03-20](morning-briefs/2026-03-20-morning.md)
+- [2026-03-21](morning-briefs/2026-03-21-morning.md)
+- [2026-03-22](morning-briefs/2026-03-22-morning.md)
+- [latest](morning-briefs/latest-morning.md)
 
 ---
 
-## 使用说明
+## 同步方式
 
-### 网页查看
-直接从仓库首页进入，推荐顺序：
-1. 先看 [系统 Dashboard](status/system-dashboard.md)
-2. 再看各类最新报告
+### 自动流程
+1. OpenClaw 定时任务生成早报
+2. 保存到本地工作目录
+3. 自动提交到 `daily-reports`
+4. 推送到 GitHub 仓库
 
-### 本地查看
+---
+
+## 本地查看
+
 ```bash
 git clone https://github.com/Badelement/daily-reports.git
 cd daily-reports
 git pull origin main
+cat morning-briefs/$(ls morning-briefs | sort | tail -1)
 ```
 
-### 手动检查同步状态
+---
+
+## 手动检查同步状态
+
 ```bash
 cd ~/.openclaw/workspace/daily-reports
 git log --oneline -5
@@ -75,15 +69,14 @@ git status
 
 ---
 
-## 维护说明
+## 说明
 
-- 这个仓库已经不只是“早报仓库”
-- 首页负责导航，详细内容放在各子目录
-- dashboard 负责回答“现在系统怎么样”
-- 报告目录负责回答“最近发生了什么”
+- 仓库现在已经公开，可直接网页查看
+- 如果首页看起来“空”，通常是因为内容在 `morning-briefs/` 子目录里
+- README 会在推送早报时自动更新“最新早报”入口
 
 ---
 
-**最后更新**: 2026-03-21
-**维护者**: OpenClaw 自动化系统
-**状态**: 🟢 运行中
+**最后更新**: 2026-03-22 08:20:57  
+**维护者**: OpenClaw 自动化系统  
+**状态**: 🟢 可查看
