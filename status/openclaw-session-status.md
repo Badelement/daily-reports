@@ -1,12 +1,12 @@
 # OpenClaw Session Status
 
-更新时间：2026-03-22 16:19 (Asia/Shanghai)
+更新时间：2026-03-22 19:18 (Asia/Shanghai)
 
 ## 当前主会话状态
 
 - **模型**：`Key`
 - **认证方式**：`telegram`
-- **当前会话**：`agent:main:cron:d2e5fda8-439e-44e2-b475-cdfb4a96c0b0`
+- **当前会话**：`agent:main:cron:d2e5fda8-439e-4…`
 - **运行模式**：`direct`
 - **Reasoning/Think**：`off`
 - **权限级别**：`normal`
@@ -34,12 +34,12 @@ Overview
 │ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
 │ Gateway service │ LaunchAgent installed · loaded · running (pid 69349, state active)                                 │
 │ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
-│ Agents          │ 1 · no bootstrap files · sessions 60 · default main active 2m ago                                  │
+│ Agents          │ 1 · no bootstrap files · sessions 61 · default main active 1m ago                                  │
 │ Memory          │ enabled (plugin memory-core) · unavailable                                                         │
 │ Probes          │ skipped (use --deep)                                                                               │
 │ Events          │ none                                                                                               │
 │ Heartbeat       │ 30m (main)                                                                                         │
-│ Sessions        │ 60 active · default deepseek-chat (128k ctx) · ~/.openclaw/agents/main/sessions/sessions.json      │
+│ Sessions        │ 61 active · default deepseek-chat (128k ctx) · ~/.openclaw/agents/main/sessions/sessions.json      │
 └─────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────┘
 
 Security audit
@@ -56,20 +56,20 @@ Channels
 └──────────┴─────────┴────────┴────────────────────────────────────────────────────────────────────────────────────────┘
 
 Sessions
-┌─────────────────────────────────────────────────┬────────┬─────────┬───────────────┬─────────────────────────────────┐
-│ Key                                             │ Kind   │ Age     │ Model         │ Tokens                          │
-├─────────────────────────────────────────────────┼────────┼─────────┼───────────────┼─────────────────────────────────┤
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2m ago  │ deepseek-chat │ 16k/128k (13%) · 🗄️ 832% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2m ago  │ deepseek-chat │ 16k/128k (13%) · 🗄️ 832% cached │
-│ agent:main:main                                 │ direct │ 10m ago │ deepseek-chat │ 87k/128k (68%) · 🗄️ 46% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 32m ago │ deepseek-chat │ 16k/128k (13%) · 🗄️ 832% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 1h ago  │ deepseek-chat │ 14k/128k (11%) · 🗄️ 761% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2h ago  │ deepseek-chat │ 14k/128k (11%) · 🗄️ 836% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2h ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 774% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 3h ago  │ deepseek-chat │ 14k/128k (11%) · 🗄️ 856% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 3h ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 740% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 4h ago  │ deepseek-chat │ 17k/128k (13%) · 🗄️ 818% cached │
-└─────────────────────────────────────────────────┴────────┴─────────┴───────────────┴─────────────────────────────────┘
+┌────────────────────────────────────────────────┬────────┬─────────┬───────────────┬──────────────────────────────────┐
+│ Key                                            │ Kind   │ Age     │ Model         │ Tokens                           │
+├────────────────────────────────────────────────┼────────┼─────────┼───────────────┼──────────────────────────────────┤
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 1m ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 832% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 1m ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 832% cached  │
+│ agent:main:cron:ef3bb9db-238b-4…               │ direct │ 3m ago  │ deepseek-chat │ 18k/128k (14%) · 🗄️ 1073% cached │
+│ agent:main:cron:ef3bb9db-238b-4…               │ direct │ 3m ago  │ deepseek-chat │ 18k/128k (14%) · 🗄️ 1073% cached │
+│ agent:main:main                                │ direct │ 9m ago  │ deepseek-chat │ 94k/128k (73%) · 🗄️ 51% cached   │
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 31m ago │ deepseek-chat │ 16k/128k (12%) · 🗄️ 832% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 1h ago  │ deepseek-chat │ 15k/128k (12%) · 🗄️ 791% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 2h ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 648% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 2h ago  │ deepseek-chat │ 15k/128k (12%) · 🗄️ 793% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 3h ago  │ deepseek-chat │ 13k/128k (10%) · 🗄️ 671% cached  │
+└────────────────────────────────────────────────┴────────┴─────────┴───────────────┴──────────────────────────────────┘
 
 FAQ: https://docs.openclaw.ai/faq
 Troubleshooting: https://docs.openclaw.ai/troubleshooting
