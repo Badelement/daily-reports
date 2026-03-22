@@ -1,12 +1,12 @@
 # OpenClaw Session Status
 
-更新时间：2026-03-23 01:19 (Asia/Shanghai)
+更新时间：2026-03-23 04:48 (Asia/Shanghai)
 
 ## 当前主会话状态
 
-- **模型**：`Kind`
+- **模型**：`Key`
 - **认证方式**：`telegram`
-- **当前会话**：`agent:main:cron:d2e5fda8-439e-4…`
+- **当前会话**：`agent:main:cron:d2e5fda8-439e-44e2-b475-cdfb4a96c0b0`
 - **运行模式**：`direct`
 - **Reasoning/Think**：`off`
 - **权限级别**：`normal`
@@ -34,7 +34,7 @@ Overview
 │ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
 │ Gateway service │ LaunchAgent installed · loaded · running (pid 69349, state active)                                 │
 │ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
-│ Agents          │ 1 · no bootstrap files · sessions 61 · default main active 1m ago                                  │
+│ Agents          │ 1 · no bootstrap files · sessions 61 · default main active just now                                │
 │ Memory          │ enabled (plugin memory-core) · unavailable                                                         │
 │ Probes          │ skipped (use --deep)                                                                               │
 │ Events          │ none                                                                                               │
@@ -56,20 +56,20 @@ Channels
 └──────────┴─────────┴────────┴────────────────────────────────────────────────────────────────────────────────────────┘
 
 Sessions
-┌─────────────────────────────────────────────────┬────────┬─────────┬───────────────┬─────────────────────────────────┐
-│ Key                                             │ Kind   │ Age     │ Model         │ Tokens                          │
-├─────────────────────────────────────────────────┼────────┼─────────┼───────────────┼─────────────────────────────────┤
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 1m ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 647% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 1m ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 647% cached │
-│ agent:main:main                                 │ direct │ 10m ago │ deepseek-chat │ 102k/128k (80%) · 🗄️ 66% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 31m ago │ deepseek-chat │ 16k/128k (12%) · 🗄️ 647% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 1h ago  │ deepseek-chat │ 21k/128k (16%) · 🗄️ 757% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2h ago  │ deepseek-chat │ 13k/128k (10%) · 🗄️ 673% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2h ago  │ deepseek-chat │ 15k/128k (12%) · 🗄️ 791% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 3h ago  │ deepseek-chat │ 13k/128k (11%) · 🗄️ 668% cached │
-│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 3h ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 740% cached │
-│ agent:main:telegram:direct:7310…                │ direct │ 3h ago  │ deepseek-chat │ 46k/128k (36%) · 🗄️ 100% cached │
-└─────────────────────────────────────────────────┴────────┴─────────┴───────────────┴─────────────────────────────────┘
+┌───────────────────────────────────────────────┬────────┬──────────┬───────────────┬──────────────────────────────────┐
+│ Key                                           │ Kind   │ Age      │ Model         │ Tokens                           │
+├───────────────────────────────────────────────┼────────┼──────────┼───────────────┼──────────────────────────────────┤
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 15k/128k (12%) · 🗄️ 792% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 15k/128k (12%) · 🗄️ 792% cached  │
+│ agent:main:main                               │ direct │ 10m ago  │ deepseek-chat │ 18k/128k (14%) · 🗄️ 93% cached   │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 30m ago  │ deepseek-chat │ 15k/128k (12%) · 🗄️ 792% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 1h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 765% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 2h ago   │ deepseek-chat │ 14k/128k (11%) · 🗄️ 762% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 2h ago   │ deepseek-chat │ 15k/128k (12%) · 🗄️ 795% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 3h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 673% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 3h ago   │ deepseek-chat │ 17k/128k (13%) · 🗄️ 714% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 4h ago   │ deepseek-chat │ 22k/128k (17%) · 🗄️ 1707% cached │
+└───────────────────────────────────────────────┴────────┴──────────┴───────────────┴──────────────────────────────────┘
 
 FAQ: https://docs.openclaw.ai/faq
 Troubleshooting: https://docs.openclaw.ai/troubleshooting
@@ -84,6 +84,7 @@ Next steps:
 
 ## 说明
 
-- 此页为 OpenClaw 会话状态快照
-- 每 30 分钟随 dashboard 一起更新
-- 用于快速查看当前会话状态和资源使用情况
+- 此文件为 OpenClaw 会话状态快照
+- 每 30 分钟随仪表板一起更新
+- 用于追踪会话状态和资源使用情况
+- 原始状态快照可用于故障排查
