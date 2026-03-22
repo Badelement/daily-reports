@@ -1,46 +1,90 @@
 # OpenClaw Session Status
 
-更新时间：2026-03-20 12:43 (Asia/Shanghai)
+更新时间：2026-03-22 16:19 (Asia/Shanghai)
 
 ## 当前主会话状态
 
-- **模型**：`openai-codex/gpt-5.4`
-- **认证方式**：`oauth (openai-codex:default)`
-- **当前会话**：`agent:main:telegram:direct:7310313484`
+- **模型**：`Key`
+- **认证方式**：`telegram`
+- **当前会话**：`agent:main:cron:d2e5fda8-439e-44e2-b475-cdfb4a96c0b0`
 - **运行模式**：`direct`
 - **Reasoning/Think**：`off`
-- **权限级别**：`elevated`
+- **权限级别**：`normal`
 
 ## 使用情况
 
-- **当前使用窗口剩余**：`100%`（约 `4h 59m`）
-- **本周剩余**：`94%`（约 `5d 19h`）
-- **当前上下文占用**：`180k / 272k`（约 `66%`）
-- **缓存命中率**：`99%`
-- **缓存量**：`179k cached, 0 new`
-- **本次会话 token 统计**：`2.4k in / 258 out`
-- **队列深度**：`0`
-- **Compactions**：`6`
+- **当前上下文占用**：`16k/128k (约 13%)`
+- **缓存命中率**：`832%`
+- **缓存量**：`16k cached`
+
+## 原始状态快照
+
+```text
+OpenClaw status
+
+Overview
+┌─────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Item            │ Value                                                                                              │
+├─────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Dashboard       │ disabled                                                                                           │
+│ OS              │ macos 26.3.1 (arm64) · node 22.22.1                                                                │
+│ Tailscale       │ off                                                                                                │
+│ Channel         │ stable (default)                                                                                   │
+│ Update          │ pnpm · npm latest 2026.3.13                                                                        │
+│ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
+│ Gateway service │ LaunchAgent installed · loaded · running (pid 69349, state active)                                 │
+│ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
+│ Agents          │ 1 · no bootstrap files · sessions 60 · default main active 2m ago                                  │
+│ Memory          │ enabled (plugin memory-core) · unavailable                                                         │
+│ Probes          │ skipped (use --deep)                                                                               │
+│ Events          │ none                                                                                               │
+│ Heartbeat       │ 30m (main)                                                                                         │
+│ Sessions        │ 60 active · default deepseek-chat (128k ctx) · ~/.openclaw/agents/main/sessions/sessions.json      │
+└─────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+Security audit
+Summary: 0 critical · 0 warn · 1 info
+No critical or warn findings detected.
+Full report: openclaw security audit
+Deep probe: openclaw security audit --deep
+
+Channels
+┌──────────┬─────────┬────────┬────────────────────────────────────────────────────────────────────────────────────────┐
+│ Channel  │ Enabled │ State  │ Detail                                                                                 │
+├──────────┼─────────┼────────┼────────────────────────────────────────────────────────────────────────────────────────┤
+│ Telegram │ ON      │ OK     │ token config (8672…S1_g · len 46) · accounts 1/1                                       │
+└──────────┴─────────┴────────┴────────────────────────────────────────────────────────────────────────────────────────┘
+
+Sessions
+┌─────────────────────────────────────────────────┬────────┬─────────┬───────────────┬─────────────────────────────────┐
+│ Key                                             │ Kind   │ Age     │ Model         │ Tokens                          │
+├─────────────────────────────────────────────────┼────────┼─────────┼───────────────┼─────────────────────────────────┤
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2m ago  │ deepseek-chat │ 16k/128k (13%) · 🗄️ 832% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2m ago  │ deepseek-chat │ 16k/128k (13%) · 🗄️ 832% cached │
+│ agent:main:main                                 │ direct │ 10m ago │ deepseek-chat │ 87k/128k (68%) · 🗄️ 46% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 32m ago │ deepseek-chat │ 16k/128k (13%) · 🗄️ 832% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 1h ago  │ deepseek-chat │ 14k/128k (11%) · 🗄️ 761% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2h ago  │ deepseek-chat │ 14k/128k (11%) · 🗄️ 836% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2h ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 774% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 3h ago  │ deepseek-chat │ 14k/128k (11%) · 🗄️ 856% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 3h ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 740% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 4h ago  │ deepseek-chat │ 17k/128k (13%) · 🗄️ 818% cached │
+└─────────────────────────────────────────────────┴────────┴─────────┴───────────────┴─────────────────────────────────┘
+
+FAQ: https://docs.openclaw.ai/faq
+Troubleshooting: https://docs.openclaw.ai/troubleshooting
+
+Next steps:
+  Need to share?      openclaw status --all
+  Need to debug live? openclaw logs --follow
+  Fix reachability first: openclaw gateway probe
+```
+
+---
 
 ## 说明
 
-这个文件用于快速查看当前 OpenClaw 主会话的运行状态，方便在 GitHub 仓库中集中监控：
-
-- 当前使用的模型
-- 剩余额度/配额
-- 上下文窗口压力
-- 缓存命中情况
-- 当前会话是否拥堵
-
-## 建议解读
-
-### 目前状态
-- **Codex 可继续使用**：当前窗口剩余充足
-- **本周额度仍然健康**：94% 剩余
-- **上下文压力中等偏高**：66%，可继续使用，但如果持续长对话应注意压缩
-- **缓存命中很好**：说明重复上下文利用率高
-
-### 调度建议
-- 日常任务：优先 `DeepSeek`
-- 代码攻坚 / 工程任务：使用 `Codex`
-- 长对话 / 复杂任务：适时做摘要和压缩，避免上下文持续堆高
+- 此文件为 OpenClaw 会话状态快照
+- 每 30 分钟随仪表板一起更新
+- 用于追踪会话状态和资源使用情况
+- 原始状态快照可用于故障排查
