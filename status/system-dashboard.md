@@ -2,7 +2,7 @@
 
 主监控页。用于集中查看 OpenClaw 当前运行状态，并作为这个仓库的状态入口页。
 
-**更新时间**: 2026-03-23 08:47:58 (Asia/Shanghai)
+**更新时间**: 2026-03-23 09:17:59 (Asia/Shanghai)
 
 ---
 
@@ -77,16 +77,16 @@ Sessions
 ┌───────────────────────────────────────────────┬────────┬──────────┬───────────────┬──────────────────────────────────┐
 │ Key                                           │ Kind   │ Age      │ Model         │ Tokens                           │
 ├───────────────────────────────────────────────┼────────┼──────────┼───────────────┼──────────────────────────────────┤
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 15k/128k (12%) · 🗄️ 794% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 15k/128k (12%) · 🗄️ 794% cached  │
-│ agent:main:telegram:direct:7310…              │ direct │ just now │ deepseek-chat │ 50k/128k (39%) · 🗄️ 100% cached  │
-│ agent:main:main                               │ direct │ 10m ago  │ deepseek-chat │ 36k/128k (28%) · 🗄️ 98% cached   │
-│ agent:main:cron:9fea7709-95fe-4…              │ direct │ 28m ago  │ deepseek-chat │ 18k/128k (14%) · 🗄️ 1453% cached │
-│ agent:main:cron:9fea7709-95fe-4…              │ direct │ 28m ago  │ deepseek-chat │ 18k/128k (14%) · 🗄️ 1453% cached │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 30m ago  │ deepseek-chat │ 15k/128k (12%) · 🗄️ 794% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 1h ago   │ deepseek-chat │ 14k/128k (11%) · 🗄️ 842% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 13k/128k (10%) · 🗄️ 766% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 13k/128k (10%) · 🗄️ 766% cached  │
+│ agent:main:telegram:direct:7310…              │ direct │ 1m ago   │ deepseek-chat │ 23k/128k (18%) · 🗄️ 99% cached   │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 30m ago  │ deepseek-chat │ 13k/128k (10%) · 🗄️ 766% cached  │
+│ agent:main:main                               │ direct │ 40m ago  │ deepseek-chat │ 36k/128k (28%) · 🗄️ 98% cached   │
+│ agent:main:cron:9fea7709-95fe-4…              │ direct │ 58m ago  │ deepseek-chat │ 18k/128k (14%) · 🗄️ 1453% cached │
+│ agent:main:cron:9fea7709-95fe-4…              │ direct │ 58m ago  │ deepseek-chat │ 18k/128k (14%) · 🗄️ 1453% cached │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 1h ago   │ deepseek-chat │ 15k/128k (12%) · 🗄️ 794% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 2h ago   │ deepseek-chat │ 14k/128k (11%) · 🗄️ 842% cached  │
 │ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 2h ago   │ deepseek-chat │ 15k/128k (12%) · 🗄️ 793% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 2h ago   │ deepseek-chat │ 16k/128k (12%) · 🗄️ 648% cached  │
 └───────────────────────────────────────────────┴────────┴──────────┴───────────────┴──────────────────────────────────┘
 
 FAQ: https://docs.openclaw.ai/faq
@@ -138,9 +138,9 @@ Dashboard: disabled
 ID                                   Name                     Schedule                         Next       Last       Status    Target    Agent ID   Model               
 d2e5fda8-439e-44e2-b475-cdfb4a96c0b0 daily-reports-dashboa... every 30m                        <1m ago    30m ago    running   isolated  main       deepseek/deepseek...
 ef3bb9db-238b-4e6b-9dda-dbc79e87a541 open-source-watch-for... cron 15 19 * * * @ Asia/Shang... in 10h     14h ago    ok        isolated  main       deepseek/deepseek...
-bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @ Asia/Shang... in 13h     11h ago    ok        isolated  -          deepseek/deepseek...
-9fea7709-95fe-462f-b38c-752efed139b0 morning-intel-brief      cron 20 8 * * * @ Asia/Shangh... in 24h     28m ago    ok        isolated  -          deepseek/deepseek...
-6b5c0215-c791-4e55-bcd6-64abd24afbb9 weekly-agent-security... cron 30 20 * * 0 @ Asia/Shang... in 6d      12h ago    ok        isolated  main       deepseek/deepseek...
+bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @ Asia/Shang... in 12h     12h ago    ok        isolated  -          deepseek/deepseek...
+9fea7709-95fe-462f-b38c-752efed139b0 morning-intel-brief      cron 20 8 * * * @ Asia/Shangh... in 23h     58m ago    ok        isolated  -          deepseek/deepseek...
+6b5c0215-c791-4e55-bcd6-64abd24afbb9 weekly-agent-security... cron 30 20 * * 0 @ Asia/Shang... in 6d      13h ago    ok        isolated  main       deepseek/deepseek...
 ```
 
 ---
@@ -148,16 +148,16 @@ bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @
 ## 6. 仓库状态
 
 ### 中文摘要
-- 最近一次提交：0d42cfa Update reports - 2026-03-23 08:21:18
+- 最近一次提交：0b845d2 cron: update system dashboard snapshot [2026-03-23 08:47]
 - 工作区状态：干净
 
 ### 最近提交
 ```text
+0b845d2 cron: update system dashboard snapshot [2026-03-23 08:47]
 0d42cfa Update reports - 2026-03-23 08:21:18
 2a2dc0a chore: update system dashboard snapshot [cron:d2e5fda8-439e-44e2-b475-cdfb4a96c0b0]
 5a31ca3 chore: update system dashboard snapshot [cron:d2e5fda8-439e-44e2-b475-cdfb4a96c0b0]
 124b625 chore: update system dashboard snapshot [cron:d2e5fda8-439e-44e2-b475-cdfb4a96c0b0]
-9ebc085 dashboard: auto-refresh at 2026-03-23 06:48:07
 ```
 
 ### 工作区状态
