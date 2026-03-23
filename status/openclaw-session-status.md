@@ -29,7 +29,7 @@ Overview
 │ Channel         │ stable (default)                                                                                   │
 │ Update          │ available · pnpm · npm update 2026.3.22                                                            │
 │ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
-│ Gateway service │ LaunchAgent installed · loaded · running (pid 63284, state active)                                 │
+│ Gateway service │ LaunchAgent installed · loaded · running (pid 64295, state active)                                 │
 │ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
 │ Agents          │ 1 · no bootstrap files · sessions 59 · default main active just now                                │
 │ Memory          │ enabled (plugin memory-core) · unavailable                                                         │
