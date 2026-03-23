@@ -2,7 +2,6 @@
 import json
 import re
 import subprocess
-from datetime import datetime
 from pathlib import Path
 
 REPO = Path('/Users/badelement/.openclaw/workspace/daily-reports')
@@ -35,11 +34,6 @@ def get_cron_list():
     text = out if out else err
     lines = text.splitlines()[:20]
     return '\n'.join(lines) if lines else 'unavailable'
-
-
-def get_git_log():
-    code, out, err = run(['git', '-C', str(REPO), 'log', '--oneline', '-5'])
-    return out if out else (err or 'unavailable')
 
 
 def get_git_porcelain():
@@ -155,11 +149,8 @@ def build_cron_summary(cron_text):
     return '\n'.join(summary) if summary else '- 暂时无法提取中文摘要，请查看下方原始状态'
 
 
-def build_repo_summary(git_log, git_status):
+def build_repo_summary(git_status):
     summary = []
-    first_commit = git_log.splitlines()[0].strip() if git_log.strip() else ''
-    if first_commit:
-        summary.append(f'- 最近一次提交：{first_commit}')
     if git_status.strip():
         changed = len([line for line in git_status.splitlines() if line.strip()])
         summary.append(f'- 工作区有未提交更改：{changed} 项')
@@ -169,18 +160,16 @@ def build_repo_summary(git_log, git_status):
 
 
 def write_dashboard():
-    now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     counts = get_report_counts()
     session_status = get_session_status()
     gateway_status = get_gateway_status()
     cron_list = get_cron_list()
-    git_log = get_git_log()
     git_status = get_git_porcelain()
     anomalies = derive_anomalies(session_status, gateway_status, cron_list, git_status)
     session_summary = build_session_summary(session_status)
     gateway_summary = build_gateway_summary(gateway_status)
     cron_summary = build_cron_summary(cron_list)
-    repo_summary = build_repo_summary(git_log, git_status)
+    repo_summary = build_repo_summary(git_status)
 
     anomaly_block = '\n'.join([f'- {a}' if not a.startswith('- ') else a for a in anomalies]) if anomalies else '- 当前未发现明显异常'
     git_status_block = git_status if git_status.strip() else 'working tree clean'
@@ -188,8 +177,6 @@ def write_dashboard():
     content = f'''# 🖥️ OpenClaw System Dashboard
 
 主监控页。用于集中查看 OpenClaw 当前运行状态，并作为这个仓库的状态入口页。
-
-**更新时间**: {now} (Asia/Shanghai)
 
 ---
 
@@ -255,11 +242,6 @@ def write_dashboard():
 
 ### 中文摘要
 {repo_summary}
-
-### 最近提交
-```text
-{git_log}
-```
 
 ### 工作区状态
 ```text

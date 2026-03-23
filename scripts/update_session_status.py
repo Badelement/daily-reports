@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
+import re
 import subprocess
-from datetime import datetime
 from pathlib import Path
 
 REPO = Path('/Users/badelement/.openclaw/workspace/daily-reports')
@@ -19,74 +19,42 @@ def get_session_status():
 
 def parse_session_info(status_text):
     info = {
-        'model': 'deepseek-chat',
+        'model': 'deepseek/deepseek-chat',
         'auth': 'telegram',
         'current_session': 'agent:main:cron:d2e5fda8-439e-44e2-b475-cdfb4a96c0b0',
         'mode': 'direct',
         'reasoning': 'off',
         'permission': 'normal',
         'context_usage': 'unknown',
-        'cache_hit': 'unknown',
-        'cache_size': 'unknown'
+        'active_sessions': 'unknown'
     }
     
     lines = status_text.splitlines()
+
+    model_match = re.search(r'Sessions\s*│\s*\d+ active · default ([^(·\n]+)', status_text)
+    if model_match:
+        info['model'] = model_match.group(1).strip()
     
-    # 从状态中提取更准确的信息
-    for line in lines:
-        if 'Model' in line and '│' in line:
-            parts = line.split('│')
-            if len(parts) > 1:
-                model_val = parts[1].strip()
-                if model_val and model_val != 'Value':
-                    info['model'] = model_val
-    
-    # 查找当前活跃的会话
-    for line in lines:
-        if 'agent:main:' in line and 'direct' in line and '1m ago' in line:
-            # 找到最近的会话
-            parts = line.split()
-            for part in parts:
-                if part.startswith('agent:main:'):
-                    info['current_session'] = part
-                    break
-    
-    # 提取上下文使用情况 - 查找最近的会话行
-    for line in lines:
-        if 'agent:main:cron:d2e5fda8-439e-44e2-b475-cdfb4a96c0b0' in line:
-            import re
-            # 例如: "16k/128k (13%) · 🗄️ 832% cached"
-            match = re.search(r'(\d+k)/(\d+k)\s*\((\d+)%\)', line)
-            if match:
-                info['context_usage'] = f"{match.group(1)} / {match.group(2)} (约 {match.group(3)}%)"
-            
-            match = re.search(r'🗄️\s*(\d+)% cached', line)
-            if match:
-                info['cache_hit'] = f"{match.group(1)}%"
-            
-            match = re.search(r'(\d+k cached)', line)
-            if match:
-                info['cache_size'] = match.group(1)
-            break
-    
-    # 如果没找到，使用默认值
+    session_match = re.search(r'Sessions\s*│\s*(\d+) active', status_text)
+    if session_match:
+        info['active_sessions'] = session_match.group(1)
+
+    context_match = re.search(r'agent:main:[^\n]*?(\d+k/\d+k \(\d+%\))', status_text)
+    if context_match:
+        info['context_usage'] = context_match.group(1)
+
     if info['context_usage'] == 'unknown':
-        info['context_usage'] = '16k/128k (约 13%)'
-    if info['cache_hit'] == 'unknown':
-        info['cache_hit'] = '832%'
-    if info['cache_size'] == 'unknown':
-        info['cache_size'] = '16k cached'
+        overview_match = re.search(r'Sessions\s*│\s*\d+ active · [^·]+ · ([^\n]+)', status_text)
+        if overview_match:
+            info['context_usage'] = overview_match.group(1).strip()
     
     return info
 
 def update_session_status_file():
-    now = datetime.now().strftime('%Y-%m-%d %H:%M (Asia/Shanghai)')
     status_text = get_session_status()
     info = parse_session_info(status_text)
     
     content = f'''# OpenClaw Session Status
-
-更新时间：{now}
 
 ## 当前主会话状态
 
@@ -99,14 +67,13 @@ def update_session_status_file():
 
 ## 使用情况
 
+- **活跃会话数**：`{info['active_sessions']}`
 - **当前上下文占用**：`{info['context_usage']}`
-- **缓存命中率**：`{info['cache_hit']}`
-- **缓存量**：`{info['cache_size']}`
 
-## 原始状态快照
+## 原始状态摘要
 
 ```text
-{status_text}
+{chr(10).join(status_text.splitlines()[:18])}
 ```
 
 ---
@@ -120,7 +87,7 @@ def update_session_status_file():
 '''
     
     (STATUS_DIR / 'openclaw-session-status.md').write_text(content, encoding='utf-8')
-    print(f"会话状态文件已更新: {now}")
+    print("会话状态文件已更新")
 
 if __name__ == '__main__':
     update_session_status_file()

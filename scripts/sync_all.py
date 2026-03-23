@@ -50,12 +50,11 @@ class ReportSyncer:
                 'prefix': 'security'
             },
             'watch': {
-                'source_pattern': 'open-source-watch-*.md',
-                'source_dir': Path.home() / '.openclaw' / 'workspace',
+                'source_pattern': '????-??-??-watch-note.md',
+                'source_dir': Path.home() / '.openclaw' / 'workspace' / 'open-source-watch',
                 'target_dir': self.repo_path / 'open-source-watch',
                 'date_format': '%Y-%m-%d',
-                'prefix': 'watch',
-                'cron_job_id': 'ef3bb9db-238b-4e6b-9dda-dbc79e87a541'
+                'prefix': 'watch'
             }
         }
         
@@ -84,45 +83,6 @@ class ReportSyncer:
         
         logger.info(f"开始同步 {report_type} 报告...")
 
-        # watch 类型：从 cron 运行历史回填为 markdown 文件
-        if report_type == 'watch':
-            try:
-                result = subprocess.run(
-                    ['openclaw', 'cron', 'runs', '--id', config['cron_job_id'], '--limit', '30'],
-                    capture_output=True,
-                    text=True,
-                    timeout=30
-                )
-                if result.returncode != 0:
-                    logger.warning(f"无法读取 watch cron 历史: {result.stderr}")
-                    return 0
-                data = json.loads(result.stdout)
-                entries = data.get('entries', [])
-                if not entries:
-                    logger.warning('未找到 watch cron 历史记录')
-                    return 0
-
-                synced_count = 0
-                cutoff = datetime.now().date() - timedelta(days=days_back)
-                for entry in entries:
-                    run_ts = entry.get('runAtMs', entry.get('ts'))
-                    summary = (entry.get('summary') or '').strip()
-                    if not run_ts or not summary:
-                        continue
-                    run_date = datetime.fromtimestamp(run_ts / 1000).date()
-                    if run_date < cutoff:
-                        continue
-                    target_filename = f"{run_date.strftime('%Y-%m-%d')}-{config['prefix']}.md"
-                    target_path = target_dir / target_filename
-                    content = f"---\ntitle: {run_date.strftime('%Y-%m-%d')} 开源观察\ntype: watch\ndate: {run_date.strftime('%Y-%m-%d')}\ntags: [openclaw, automation, open-source]\nsynced_at: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}\nsynced_by: cron_runs_sync\n---\n\n{summary}\n"
-                    target_path.write_text(content, encoding='utf-8')
-                    synced_count += 1
-                logger.info(f"watch 同步完成: {synced_count} 新增/刷新")
-                return synced_count
-            except Exception as e:
-                logger.error(f"同步 watch 报告失败: {e}")
-                return 0
-        
         # 查找源文件
         source_files = list(source_dir.glob(pattern))
         if not source_files:
