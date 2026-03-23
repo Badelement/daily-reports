@@ -1,25 +1,10 @@
 # OpenClaw Session Status
 
-更新时间：2026-03-23 04:48 (Asia/Shanghai)
+更新时间：2026-03-23 14:47 (Asia/Shanghai)
 
 ## 当前主会话状态
 
-- **模型**：`Key`
-- **认证方式**：`telegram`
-- **当前会话**：`agent:main:cron:d2e5fda8-439e-44e2-b475-cdfb4a96c0b0`
-- **运行模式**：`direct`
-- **Reasoning/Think**：`off`
-- **权限级别**：`normal`
-
-## 使用情况
-
-- **当前上下文占用**：`16k/128k (约 13%)`
-- **缓存命中率**：`832%`
-- **缓存量**：`16k cached`
-
-## 原始状态快照
-
-```text
+```
 OpenClaw status
 
 Overview
@@ -34,7 +19,7 @@ Overview
 │ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
 │ Gateway service │ LaunchAgent installed · loaded · running (pid 69349, state active)                                 │
 │ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
-│ Agents          │ 1 · no bootstrap files · sessions 61 · default main active just now                                │
+│ Agents          │ 1 · no bootstrap files · sessions 61 · default main active 1m ago                                  │
 │ Memory          │ enabled (plugin memory-core) · unavailable                                                         │
 │ Probes          │ skipped (use --deep)                                                                               │
 │ Events          │ none                                                                                               │
@@ -56,20 +41,20 @@ Channels
 └──────────┴─────────┴────────┴────────────────────────────────────────────────────────────────────────────────────────┘
 
 Sessions
-┌───────────────────────────────────────────────┬────────┬──────────┬───────────────┬──────────────────────────────────┐
-│ Key                                           │ Kind   │ Age      │ Model         │ Tokens                           │
-├───────────────────────────────────────────────┼────────┼──────────┼───────────────┼──────────────────────────────────┤
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 15k/128k (12%) · 🗄️ 792% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 15k/128k (12%) · 🗄️ 792% cached  │
-│ agent:main:main                               │ direct │ 10m ago  │ deepseek-chat │ 18k/128k (14%) · 🗄️ 93% cached   │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 30m ago  │ deepseek-chat │ 15k/128k (12%) · 🗄️ 792% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 1h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 765% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 2h ago   │ deepseek-chat │ 14k/128k (11%) · 🗄️ 762% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 2h ago   │ deepseek-chat │ 15k/128k (12%) · 🗄️ 795% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 3h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 673% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 3h ago   │ deepseek-chat │ 17k/128k (13%) · 🗄️ 714% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 4h ago   │ deepseek-chat │ 22k/128k (17%) · 🗄️ 1707% cached │
-└───────────────────────────────────────────────┴────────┴──────────┴───────────────┴──────────────────────────────────┘
+┌─────────────────────────────────────────────────┬────────┬─────────┬───────────────┬─────────────────────────────────┐
+│ Key                                             │ Kind   │ Age     │ Model         │ Tokens                          │
+├─────────────────────────────────────────────────┼────────┼─────────┼───────────────┼─────────────────────────────────┤
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 1m ago  │ deepseek-chat │ 16k/128k (13%) · 🗄️ 736% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 1m ago  │ deepseek-chat │ 16k/128k (13%) · 🗄️ 736% cached │
+│ agent:main:main                                 │ direct │ 1m ago  │ deepseek-chat │ 63k/128k (49%) · 🗄️ 99% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 31m ago │ deepseek-chat │ 16k/128k (13%) · 🗄️ 736% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 1h ago  │ deepseek-chat │ 16k/128k (13%) · 🗄️ 829% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2h ago  │ deepseek-chat │ 15k/128k (12%) · 🗄️ 795% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 2h ago  │ deepseek-chat │ 18k/128k (14%) · 🗄️ 802% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 3h ago  │ deepseek-chat │ 16k/128k (12%) · 🗄️ 648% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 3h ago  │ deepseek-chat │ 18k/128k (14%) · 🗄️ 803% cached │
+│ agent:main:cron:d2e5fda8-439e-4…                │ direct │ 4h ago  │ deepseek-chat │ 15k/128k (12%) · 🗄️ 793% cached │
+└─────────────────────────────────────────────────┴────────┴─────────┴───────────────┴─────────────────────────────────┘
 
 FAQ: https://docs.openclaw.ai/faq
 Troubleshooting: https://docs.openclaw.ai/troubleshooting
@@ -80,11 +65,24 @@ Next steps:
   Fix reachability first: openclaw gateway probe
 ```
 
----
+## 状态摘要
 
-## 说明
+- **系统状态**: 正常
+- **Gateway 服务**: 运行中 (pid 69349)
+- **Telegram 通道**: 正常
+- **活跃会话**: 61 个
+- **主会话**: 1 分钟前活跃
+- **安全审计**: 0 个关键问题，0 个警告，1 个信息项
+- **心跳频率**: 30 分钟
 
-- 此文件为 OpenClaw 会话状态快照
-- 每 30 分钟随仪表板一起更新
-- 用于追踪会话状态和资源使用情况
-- 原始状态快照可用于故障排查
+## 注意事项
+
+1. Gateway 仅监听本机回环地址 (127.0.0.1:18789)
+2. Node 服务未加载
+3. Memory 插件已启用但当前不可用
+4. 会话缓存率较高，部分会话达到 800%+ 缓存
+
+## 相关链接
+
+- [返回系统仪表板](system-dashboard.md)
+- [返回仓库首页](../README.md)
