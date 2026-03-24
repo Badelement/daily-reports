@@ -27,7 +27,7 @@ Overview
 │ OS              │ macos 26.3.1 (arm64) · node 22.22.1                                                                │
 │ Tailscale       │ off                                                                                                │
 │ Channel         │ stable (default)                                                                                   │
-│ Update          │ available · pnpm · npm update 2026.3.23-1                                                          │
+│ Update          │ available · pnpm · npm update 2026.3.23-2                                                          │
 │ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
 │ Gateway service │ LaunchAgent installed · loaded · running (pid 65796, state active)                                 │
 │ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
