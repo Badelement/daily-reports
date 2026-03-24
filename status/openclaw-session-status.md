@@ -11,7 +11,7 @@
 
 ## 使用情况
 
-- **活跃会话数**：`59`
+- **活跃会话数**：`60`
 - **当前上下文占用**：`13k/128k (10%)`
 
 ## 原始状态摘要
@@ -31,7 +31,7 @@ Overview
 │ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
 │ Gateway service │ LaunchAgent installed · loaded · running (pid 65796, state active)                                 │
 │ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
-│ Agents          │ 1 · no bootstrap files · sessions 59 · default main active just now                                │
+│ Agents          │ 1 · no bootstrap files · sessions 60 · default main active just now                                │
 │ Memory          │ enabled (plugin memory-core) · unavailable                                                         │
 │ Probes          │ skipped (use --deep)                                                                               │
 │ Events          │ none                                                                                               │
