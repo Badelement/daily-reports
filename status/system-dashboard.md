@@ -7,13 +7,13 @@
 ## 1. 当前系统概览
 
 ### 最新内容入口
-- 最新早报: [2026-03-23-morning.md](../morning-briefs/2026-03-23-morning.md)
+- 最新早报: [2026-03-24-morning.md](../morning-briefs/2026-03-24-morning.md)
 - 最新复盘: [2026-03-19-evening.md](../evening-reviews/2026-03-19-evening.md)
 - 最新安全笔记: [2026-03-15-security.md](../weekly-security/2026-03-15-security.md)
 - 最新开源观察: [2026-03-19-watch.md](../open-source-watch/2026-03-19-watch.md)
 
 ### 报告库存
-- 早报数量: 11
+- 早报数量: 12
 - 复盘数量: 8
 - 安全笔记数量: 2
 - 开源观察数量: 6
@@ -46,7 +46,7 @@ Overview
 │ OS              │ macos 26.3.1 (arm64) · node 22.22.1                                                                │
 │ Tailscale       │ off                                                                                                │
 │ Channel         │ stable (default)                                                                                   │
-│ Update          │ available · pnpm · npm update 2026.3.23                                                            │
+│ Update          │ available · pnpm · npm update 2026.3.23-1                                                          │
 │ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
 │ Gateway service │ LaunchAgent installed · loaded · running (pid 65796, state active)                                 │
 │ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
@@ -72,25 +72,25 @@ Channels
 └──────────┴─────────┴────────┴────────────────────────────────────────────────────────────────────────────────────────┘
 
 Sessions
-┌────────────────────────────────────────────────┬────────┬──────────┬───────────────┬─────────────────────────────────┐
-│ Key                                            │ Kind   │ Age      │ Model         │ Tokens                          │
-├────────────────────────────────────────────────┼────────┼──────────┼───────────────┼─────────────────────────────────┤
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ just now │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ just now │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached │
-│ agent:main:main                                │ direct │ 11m ago  │ deepseek-chat │ 62k/128k (49%) · 🗄️ 99% cached  │
-│ agent:main:telegram:direct:7310…               │ direct │ 15m ago  │ deepseek-chat │ 93k/128k (73%) · 🗄️ 99% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 30m ago  │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 1h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 2h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 2h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 3h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 3h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached │
-└────────────────────────────────────────────────┴────────┴──────────┴───────────────┴─────────────────────────────────┘
+┌───────────────────────────────────────────────┬────────┬──────────┬───────────────┬──────────────────────────────────┐
+│ Key                                           │ Kind   │ Age      │ Model         │ Tokens                           │
+├───────────────────────────────────────────────┼────────┼──────────┼───────────────┼──────────────────────────────────┤
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached  │
+│ agent:main:telegram:direct:7310…              │ direct │ 7m ago   │ deepseek-chat │ 96k/128k (75%) · 🗄️ 99% cached   │
+│ agent:main:main                               │ direct │ 11m ago  │ deepseek-chat │ 66k/128k (51%) · 🗄️ 100% cached  │
+│ agent:main:cron:9fea7709-95fe-4…              │ direct │ 28m ago  │ deepseek-chat │ 22k/128k (17%) · 🗄️ 1779% cached │
+│ agent:main:cron:9fea7709-95fe-4…              │ direct │ 28m ago  │ deepseek-chat │ 22k/128k (17%) · 🗄️ 1779% cached │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 30m ago  │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 1h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 2h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 2h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached  │
+└───────────────────────────────────────────────┴────────┴──────────┴───────────────┴──────────────────────────────────┘
 
 FAQ: https://docs.openclaw.ai/faq
 Troubleshooting: https://docs.openclaw.ai/troubleshooting
 
-Update available (npm 2026.3.23). Run: openclaw update
+Update available (npm 2026.3.23-1). Run: openclaw update
 
 Next steps:
   Need to share?      openclaw status --all
@@ -137,11 +137,11 @@ Dashboard: disabled
 ```text
 ID                                   Name                     Schedule                         Next       Last       Status    Target    Agent ID   Model               
 d2e5fda8-439e-44e2-b475-cdfb4a96c0b0 daily-reports-dashboa... every 30m                        <1m ago    30m ago    running   isolated  main       deepseek/deepseek...
-9fea7709-95fe-462f-b38c-752efed139b0 morning-intel-brief      cron 20 8 * * * @ Asia/Shangh... in 2m      24h ago    ok        isolated  -          deepseek/deepseek...
-ef3bb9db-238b-4e6b-9dda-dbc79e87a541 open-source-watch-for... cron 15 19 * * * @ Asia/Shang... in 11h     13h ago    ok        isolated  main       deepseek/deepseek...
+ef3bb9db-238b-4e6b-9dda-dbc79e87a541 open-source-watch-for... cron 15 19 * * * @ Asia/Shang... in 10h     14h ago    ok        isolated  main       deepseek/deepseek...
 bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @ Asia/Shang... in 13h     11h ago    ok        isolated  -          deepseek/deepseek...
-4060f451-8038-4931-a5eb-d447aff969ae self-iteration-daily     cron 0 23 * * * @ Asia/Shangh... in 15h     -          idle      isolated  main       deepseek/deepseek...
-6b5c0215-c791-4e55-bcd6-64abd24afbb9 weekly-agent-security... cron 30 20 * * 0 @ Asia/Shang... in 6d      1d ago     ok        isolated  main       deepseek/deepseek...
+4060f451-8038-4931-a5eb-d447aff969ae self-iteration-daily     cron 0 23 * * * @ Asia/Shangh... in 14h     -          idle      isolated  main       deepseek/deepseek...
+9fea7709-95fe-462f-b38c-752efed139b0 morning-intel-brief      cron 20 8 * * * @ Asia/Shangh... in 24h     28m ago    ok        isolated  -          deepseek/deepseek...
+6b5c0215-c791-4e55-bcd6-64abd24afbb9 weekly-agent-security... cron 30 20 * * 0 @ Asia/Shang... in 5d      2d ago     ok        isolated  main       deepseek/deepseek...
 ```
 
 ---
