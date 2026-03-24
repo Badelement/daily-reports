@@ -46,7 +46,7 @@ Overview
 │ OS              │ macos 26.3.1 (arm64) · node 22.22.1                                                                │
 │ Tailscale       │ off                                                                                                │
 │ Channel         │ stable (default)                                                                                   │
-│ Update          │ available · pnpm · npm update 2026.3.23-2                                                          │
+│ Update          │ pnpm · npm latest unknown                                                                          │
 │ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
 │ Gateway service │ LaunchAgent installed · loaded · running (pid 65796, state active)                                 │
 │ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
@@ -75,22 +75,20 @@ Sessions
 ┌────────────────────────────────────────────────┬────────┬──────────┬───────────────┬─────────────────────────────────┐
 │ Key                                            │ Kind   │ Age      │ Model         │ Tokens                          │
 ├────────────────────────────────────────────────┼────────┼──────────┼───────────────┼─────────────────────────────────┤
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ just now │ deepseek-chat │ 15k/128k (12%) · 🗄️ 99% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ just now │ deepseek-chat │ 15k/128k (12%) · 🗄️ 99% cached  │
-│ agent:main:main                                │ direct │ 26m ago  │ deepseek-chat │ 105k/128k (82%) · 🗄️ 53% cached │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 30m ago  │ deepseek-chat │ 14k/128k (11%) · 🗄️ 453% cached │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 1h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached │
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ just now │ deepseek-chat │ 13k/128k (10%) · 🗄️ 296% cached │
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ just now │ deepseek-chat │ 13k/128k (10%) · 🗄️ 296% cached │
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 30m ago  │ deepseek-chat │ 13k/128k (10%) · 🗄️ 296% cached │
+│ agent:main:main                                │ direct │ 56m ago  │ deepseek-chat │ 105k/128k (82%) · 🗄️ 53% cached │
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 1h ago   │ deepseek-chat │ 14k/128k (11%) · 🗄️ 453% cached │
 │ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 2h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached │
 │ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 2h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached │
-│ agent:main:cron:4060f451-8038-4…               │ direct │ 2h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 249% cached │
-│ agent:main:cron:4060f451-8038-4…               │ direct │ 2h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 249% cached │
-│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 3h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 198% cached │
+│ agent:main:cron:d2e5fda8-439e-4…               │ direct │ 3h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached │
+│ agent:main:cron:4060f451-8038-4…               │ direct │ 3h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 249% cached │
+│ agent:main:cron:4060f451-8038-4…               │ direct │ 3h ago   │ deepseek-chat │ 13k/128k (10%) · 🗄️ 249% cached │
 └────────────────────────────────────────────────┴────────┴──────────┴───────────────┴─────────────────────────────────┘
 
 FAQ: https://docs.openclaw.ai/faq
 Troubleshooting: https://docs.openclaw.ai/troubleshooting
-
-Update available (npm 2026.3.23-2). Run: openclaw update
 
 Next steps:
   Need to share?      openclaw status --all
@@ -138,9 +136,9 @@ Dashboard: disabled
 ID                                   Name                     Schedule                         Next       Last       Status    Target    Agent ID   Model               
 d2e5fda8-439e-44e2-b475-cdfb4a96c0b0 daily-reports-dashboa... every 30m                        <1m ago    30m ago    running   isolated  main       deepseek/deepseek...
 9fea7709-95fe-462f-b38c-752efed139b0 morning-intel-brief      cron 20 8 * * * @ Asia/Shangh... in 7h      17h ago    ok        isolated  -          deepseek/deepseek...
-ef3bb9db-238b-4e6b-9dda-dbc79e87a541 open-source-watch-for... cron 15 19 * * * @ Asia/Shang... in 18h     6h ago     ok        isolated  main       deepseek/deepseek...
+ef3bb9db-238b-4e6b-9dda-dbc79e87a541 open-source-watch-for... cron 15 19 * * * @ Asia/Shang... in 17h     7h ago     ok        isolated  main       deepseek/deepseek...
 bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @ Asia/Shang... in 20h     4h ago     ok        isolated  -          deepseek/deepseek...
-4060f451-8038-4931-a5eb-d447aff969ae self-iteration-daily     cron 0 23 * * * @ Asia/Shangh... in 22h     2h ago     ok        isolated  main       deepseek/deepseek...
+4060f451-8038-4931-a5eb-d447aff969ae self-iteration-daily     cron 0 23 * * * @ Asia/Shangh... in 21h     3h ago     ok        isolated  main       deepseek/deepseek...
 6b5c0215-c791-4e55-bcd6-64abd24afbb9 weekly-agent-security... cron 30 20 * * 0 @ Asia/Shang... in 5d      2d ago     ok        isolated  main       deepseek/deepseek...
 ```
 
