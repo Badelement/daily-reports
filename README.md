@@ -28,12 +28,12 @@ daily-reports/
 
 ## 最近早报
 
-- [2026-03-19](morning-briefs/2026-03-19-morning.md)
 - [2026-03-20](morning-briefs/2026-03-20-morning.md)
 - [2026-03-21](morning-briefs/2026-03-21-morning.md)
 - [2026-03-22](morning-briefs/2026-03-22-morning.md)
 - [2026-03-23](morning-briefs/2026-03-23-morning.md)
 - [2026-03-24](morning-briefs/2026-03-24-morning.md)
+- [2026-03-25](morning-briefs/2026-03-25-morning.md)
 - [latest](morning-briefs/latest-morning.md)
 
 ---
@@ -77,6 +77,6 @@ git status
 
 ---
 
-**最后更新**: 2026-03-24 19:16:19  
+**最后更新**: 2026-03-25 08:22:49  
 **维护者**: OpenClaw 自动化系统  
 **状态**: 🟢 可查看
