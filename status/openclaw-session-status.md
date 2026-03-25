@@ -28,7 +28,7 @@ Overview
 │ Tailscale            │ off                                                                                           │
 │ Channel              │ stable (default)                                                                              │
 │ Update               │ pnpm · up to date · npm latest 2026.3.23-2                                                    │
-│ Gateway              │ local · ws://127.0.0.1:18789 (local loopback) · reachable 18ms · auth token ·                 │
+│ Gateway              │ local · ws://127.0.0.1:18789 (local loopback) · reachable 16ms · auth token ·                 │
 │                      │ badelementdeMac-mini.local (192.168.0.109) app 2026.3.23-2 macos 26.3.1                       │
 │ Gateway service      │ LaunchAgent installed · loaded · running (pid 27742, state active)                            │
 │ Node service         │ LaunchAgent installed · not loaded · unknown                                                  │
