@@ -12,7 +12,7 @@
 ## 使用情况
 
 - **活跃会话数**：`62`
-- **当前上下文占用**：`13k/128k (10%)`
+- **当前上下文占用**：`64k/128k (50%)`
 
 ## 原始状态摘要
 
@@ -29,7 +29,7 @@ Overview
 │ Channel         │ stable (default)                                                                                   │
 │ Update          │ available · pnpm · npm update 2026.3.23-2                                                          │
 │ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
-│ Gateway service │ LaunchAgent installed · loaded · running (pid 65796, state active)                                 │
+│ Gateway service │ LaunchAgent installed · loaded · running (pid 26467, state active)                                 │
 │ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
 │ Agents          │ 1 · no bootstrap files · sessions 62 · default main active just now                                │
 │ Memory          │ enabled (plugin memory-core) · unavailable                                                         │
