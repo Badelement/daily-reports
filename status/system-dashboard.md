@@ -31,7 +31,7 @@
 ### 中文摘要
 - Gateway 服务：运行中
 - Telegram 通道：正常
-- 活跃会话数：62
+- 活跃会话数：40
 - 心跳频率：30m (main)
 
 ### 原始状态
@@ -39,24 +39,26 @@
 OpenClaw status
 
 Overview
-┌─────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│ Item            │ Value                                                                                              │
-├─────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ Dashboard       │ disabled                                                                                           │
-│ OS              │ macos 26.3.1 (arm64) · node 22.22.1                                                                │
-│ Tailscale       │ off                                                                                                │
-│ Channel         │ stable (default)                                                                                   │
-│ Update          │ available · pnpm · npm update 2026.3.23-2                                                          │
-│ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
-│ Gateway service │ LaunchAgent installed · loaded · running (pid 26467, state active)                                 │
-│ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
-│ Agents          │ 1 · no bootstrap files · sessions 62 · default main active just now                                │
-│ Memory          │ enabled (plugin memory-core) · unavailable                                                         │
-│ Probes          │ skipped (use --deep)                                                                               │
-│ Events          │ none                                                                                               │
-│ Heartbeat       │ 30m (main)                                                                                         │
-│ Sessions        │ 62 active · default deepseek-chat (128k ctx) · ~/.openclaw/agents/main/sessions/sessions.json      │
-└─────────────────┴────────────────────────────────────────────────────────────────────────────────────────────────────┘
+┌──────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Item                 │ Value                                                                                         │
+├──────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Dashboard            │ disabled                                                                                      │
+│ OS                   │ macos 26.3.1 (arm64) · node 22.22.1                                                           │
+│ Tailscale            │ off                                                                                           │
+│ Channel              │ stable (default)                                                                              │
+│ Update               │ pnpm · up to date · npm latest 2026.3.23-2                                                    │
+│ Gateway              │ local · ws://127.0.0.1:18789 (local loopback) · reachable 35ms · auth token ·                 │
+│                      │ badelementdeMac-mini.local (192.168.0.109) app 2026.3.23-2 macos 26.3.1                       │
+│ Gateway service      │ LaunchAgent installed · loaded · running (pid 27742, state active)                            │
+│ Node service         │ LaunchAgent installed · not loaded · unknown                                                  │
+│ Agents               │ 1 · no bootstrap files · sessions 40 · default main active just now                           │
+│ Memory               │ enabled (plugin memory-core) · unavailable                                                    │
+│ Plugin compatibility │ none                                                                                          │
+│ Probes               │ skipped (use --deep)                                                                          │
+│ Events               │ none                                                                                          │
+│ Heartbeat            │ 30m (main)                                                                                    │
+│ Sessions             │ 40 active · default deepseek-chat (128k ctx) · ~/.openclaw/agents/main/sessions/sessions.json │
+└──────────────────────┴───────────────────────────────────────────────────────────────────────────────────────────────┘
 
 Security audit
 Summary: 0 critical · 0 warn · 1 info
@@ -75,27 +77,25 @@ Sessions
 ┌───────────────────────────────────────────────┬────────┬──────────┬───────────────┬──────────────────────────────────┐
 │ Key                                           │ Kind   │ Age      │ Model         │ Tokens                           │
 ├───────────────────────────────────────────────┼────────┼──────────┼───────────────┼──────────────────────────────────┤
-│ agent:main:telegram:direct:7310…              │ direct │ just now │ deepseek-chat │ 64k/128k (50%) · 🗄️ 100% cached  │
 │ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 13k/128k (10%) · 🗄️ 198% cached  │
 │ agent:main:cron:d2e5fda8-439e-4…              │ direct │ just now │ deepseek-chat │ 13k/128k (10%) · 🗄️ 198% cached  │
+│ agent:main:cron:ef3bb9db-238b-4…              │ direct │ 13m ago  │ deepseek-chat │ 19k/128k (15%) · 🗄️ 1333% cached │
+│ agent:main:cron:ef3bb9db-238b-4…              │ direct │ 13m ago  │ deepseek-chat │ 19k/128k (15%) · 🗄️ 1333% cached │
+│ agent:main:cron:ef3bb9db-238b-4…              │ direct │ 19m ago  │ deepseek-chat │ 15k/128k (12%) · 🗄️ 1148% cached │
+│ agent:main:telegram:direct:7310…              │ direct │ 20m ago  │ deepseek-chat │ 64k/128k (50%) · 🗄️ 100% cached  │
+│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 20m ago  │ deepseek-chat │ 13k/128k (10%) · 🗄️ 198% cached  │
 │ agent:main:cron:9fea7709-95fe-4…              │ direct │ 12h ago  │ deepseek-chat │ 38k/128k (30%) · 🗄️ 2174% cached │
 │ agent:main:cron:9fea7709-95fe-4…              │ direct │ 12h ago  │ deepseek-chat │ 38k/128k (30%) · 🗄️ 2174% cached │
-│ agent:main:main                               │ direct │ 12h ago  │ deepseek-chat │ 31k/128k (25%) · 🗄️ 100% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 12h ago  │ deepseek-chat │ 13k/128k (10%) · 🗄️ 198% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 13h ago  │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 13h ago  │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached  │
-│ agent:main:cron:d2e5fda8-439e-4…              │ direct │ 14h ago  │ deepseek-chat │ 13k/128k (10%) · 🗄️ 199% cached  │
+│ agent:main:main                               │ direct │ 13h ago  │ deepseek-chat │ 31k/128k (25%) · 🗄️ 100% cached  │
 └───────────────────────────────────────────────┴────────┴──────────┴───────────────┴──────────────────────────────────┘
 
 FAQ: https://docs.openclaw.ai/faq
 Troubleshooting: https://docs.openclaw.ai/troubleshooting
 
-Update available (npm 2026.3.23-2). Run: openclaw update
-
 Next steps:
   Need to share?      openclaw status --all
   Need to debug live? openclaw logs --follow
-  Fix reachability first: openclaw gateway probe
+  Need to test channels? openclaw status --deep
 ```
 
 ---
@@ -112,7 +112,7 @@ Next steps:
 ```text
 Service: LaunchAgent (loaded)
 File logs: /tmp/openclaw/openclaw-2026-03-25.log
-Command: /Users/badelement/.local/node-v22.22.1-darwin-arm64/bin/node /Users/badelement/.npm-global/lib/node_modules/openclaw/dist/index.js gateway --port 18789
+Command: /Users/badelement/.local/node-v22.22.1-darwin-arm64/bin/node /Users/badelement/.npm-global/lib/node_modules/openclaw/dist/entry.js gateway --port 18789
 Service file: ~/Library/LaunchAgents/ai.openclaw.gateway.plist
 Service env: OPENCLAW_GATEWAY_PORT=18789
 
@@ -130,17 +130,17 @@ Dashboard: disabled
 
 ### 中文摘要
 - 定时任务数量：6
-- 最近状态正常的任务：4/6
+- 最近状态正常的任务：5/6
 - dashboard 刷新任务：已在列表中
 
 ### 原始状态
 ```text
 ID                                   Name                     Schedule                         Next       Last       Status    Target    Agent ID   Model               
-d2e5fda8-439e-44e2-b475-cdfb4a96c0b0 daily-reports-dashboa... every 30m                        12h ago    12h ago    running   isolated  main       deepseek/deepseek...
-ef3bb9db-238b-4e6b-9dda-dbc79e87a541 open-source-watch-for... cron 15 19 * * * @ Asia/Shang... 1h ago     1d ago     running   isolated  main       deepseek/deepseek...
-bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @ Asia/Shang... in 1h      23h ago    ok        isolated  -          deepseek/deepseek...
-4060f451-8038-4931-a5eb-d447aff969ae self-iteration-daily     cron 0 23 * * * @ Asia/Shangh... in 3h      21h ago    ok        isolated  main       deepseek/deepseek...
+d2e5fda8-439e-44e2-b475-cdfb4a96c0b0 daily-reports-dashboa... every 30m                        <1m ago    13h ago    running   isolated  main       deepseek/deepseek...
+bbbba49f-c5d4-4690-b1be-3616a294cc26 daily-self-iteration     cron 35 21 * * * @ Asia/Shang... in 47m     23h ago    ok        isolated  -          deepseek/deepseek...
+4060f451-8038-4931-a5eb-d447aff969ae self-iteration-daily     cron 0 23 * * * @ Asia/Shangh... in 2h      22h ago    ok        isolated  main       deepseek/deepseek...
 9fea7709-95fe-462f-b38c-752efed139b0 morning-intel-brief      cron 20 8 * * * @ Asia/Shangh... in 12h     12h ago    ok        isolated  -          deepseek/deepseek...
+ef3bb9db-238b-4e6b-9dda-dbc79e87a541 open-source-watch-for... cron 15 19 * * * @ Asia/Shang... in 22h     13m ago    ok        isolated  main       deepseek/deepseek...
 6b5c0215-c791-4e55-bcd6-64abd24afbb9 weekly-agent-security... cron 30 20 * * 0 @ Asia/Shang... in 4d      3d ago     ok        isolated  main       deepseek/deepseek...
 ```
 

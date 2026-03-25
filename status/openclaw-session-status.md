@@ -11,8 +11,8 @@
 
 ## 使用情况
 
-- **活跃会话数**：`62`
-- **当前上下文占用**：`64k/128k (50%)`
+- **活跃会话数**：`40`
+- **当前上下文占用**：`13k/128k (10%)`
 
 ## 原始状态摘要
 
@@ -20,21 +20,21 @@
 OpenClaw status
 
 Overview
-┌─────────────────┬────────────────────────────────────────────────────────────────────────────────────────────────────┐
-│ Item            │ Value                                                                                              │
-├─────────────────┼────────────────────────────────────────────────────────────────────────────────────────────────────┤
-│ Dashboard       │ disabled                                                                                           │
-│ OS              │ macos 26.3.1 (arm64) · node 22.22.1                                                                │
-│ Tailscale       │ off                                                                                                │
-│ Channel         │ stable (default)                                                                                   │
-│ Update          │ available · pnpm · npm update 2026.3.23-2                                                          │
-│ Gateway         │ local · ws://127.0.0.1:18789 (local loopback) · unreachable (missing scope: operator.read)         │
-│ Gateway service │ LaunchAgent installed · loaded · running (pid 26467, state active)                                 │
-│ Node service    │ LaunchAgent installed · not loaded · unknown                                                       │
-│ Agents          │ 1 · no bootstrap files · sessions 62 · default main active just now                                │
-│ Memory          │ enabled (plugin memory-core) · unavailable                                                         │
-│ Probes          │ skipped (use --deep)                                                                               │
-│ Events          │ none                                                                                               │
+┌──────────────────────┬───────────────────────────────────────────────────────────────────────────────────────────────┐
+│ Item                 │ Value                                                                                         │
+├──────────────────────┼───────────────────────────────────────────────────────────────────────────────────────────────┤
+│ Dashboard            │ disabled                                                                                      │
+│ OS                   │ macos 26.3.1 (arm64) · node 22.22.1                                                           │
+│ Tailscale            │ off                                                                                           │
+│ Channel              │ stable (default)                                                                              │
+│ Update               │ pnpm · up to date · npm latest 2026.3.23-2                                                    │
+│ Gateway              │ local · ws://127.0.0.1:18789 (local loopback) · reachable 18ms · auth token ·                 │
+│                      │ badelementdeMac-mini.local (192.168.0.109) app 2026.3.23-2 macos 26.3.1                       │
+│ Gateway service      │ LaunchAgent installed · loaded · running (pid 27742, state active)                            │
+│ Node service         │ LaunchAgent installed · not loaded · unknown                                                  │
+│ Agents               │ 1 · no bootstrap files · sessions 40 · default main active just now                           │
+│ Memory               │ enabled (plugin memory-core) · unavailable                                                    │
+│ Plugin compatibility │ none                                                                                          │
 ```
 
 ---
